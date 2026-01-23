@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Registro de Habilitación – NEXA</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Anonymous Pro', monospace;
+  background: #3a177f;
+  color: #FFB733;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 36px 20px;
+  border: 3px solid rgba(255,183,51,0.6);
+}
+
+/* Líneas superior / inferior */
+body::before,
+body::after {
+  content: "";
+  width: 85%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255,183,51,0.9),
+    transparent
+  );
+}
+
+body::after {
+  opacity: 0.6;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+}
+
+h1 {
+  font-size: 46px;
+  margin: 0;
+}
+
+.codigo {
+  font-size: 26px;
+  opacity: 0.95;
+  margin-top: 10px;
+}
+
+/* ESTADO */
+.estado {
+  position: relative;
+  text-align: center;
+}
+
+.estado img {
+  width: 260px;
+  max-width: 85%;
+  position: relative;
+  z-index: 3;
+}
+
+/* HALOS */
+.estado::before,
+.estado::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 8px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.estado::before {
+  width: 360px;
+  height: 360px;
+  border: 2px solid rgba(255,183,51,0.8);
+  box-shadow:
+    0 0 30px rgba(255,183,51,0.75),
+    0 0 70px rgba(255,183,51,0.45),
+    0 0 140px rgba(255,183,51,0.3);
+  animation: haloPulse 3.8s ease-in-out infinite;
+}
+
+.estado::after {
+  width: 420px;
+  height: 420px;
+  border: 1px solid rgba(255,183,51,0.55);
+  box-shadow:
+    0 0 45px rgba(255,183,51,0.4),
+    0 0 100px rgba(255,183,51,0.25);
+  animation: haloPulse 3.8s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+@keyframes haloPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.45;
+  }
+}
+
+.estado-texto {
+  font-size: 44px;
+  letter-spacing: 4px;
+  margin-top: 36px;
+}
+
+/* INFO */
+.info {
+  font-size: 26px;
+  line-height: 2.2;
+  text-align: center;
+}
+
+.info span {
+  display: block;
+  margin-top: 14px;
+}
+
+/* FOOTER */
+footer {
+  font-size: 20px;
+  opacity: 0.75;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Registro de Habilitación</h1>
+  <div class="codigo">Credencial verificada · NEXA-001</div>
+</header>
+
+<section class="estado">
+  <img src="img/check.png" alt="Estado habilitado">
+  <div class="estado-texto">ESTADO HABILITADO</div>
+</section>
+
+<section class="info">
+  <span>📅 Período vigente: <strong>Marzo 2026</strong></span>
+  <span>📌 Este registro se actualiza periódicamente</span>
+  <span>🔒 Información de carácter informativo</span>
+</section>
+
+<footer>
+  Plataforma de verificación · NEXA
+</footer>
+
+</body>
+</html>
