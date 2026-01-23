@@ -49,30 +49,30 @@ body::after { bottom: 0; opacity: 0.6; }
   right: 10px;
   display: flex;
   align-items: center;
-  transform: scale(1.3); /* aumentamos todo el bloque */
+  transform: scale(1.6); /* tamaño aumentado */
   transform-origin: top right;
 }
 
 /* Texto "Con colaboración de" */
 .colab-text {
   color: #FFB733;
-  font-size: 24px;
+  font-size: 26px;
   margin-right: 16px;
   white-space: nowrap;
 }
 
-/* Línea diagonal dorada */
+/* Línea diagonal dorada (ahora casi recta, 75-80°) */
 .colab-line {
   width: 3px;
-  height: 80px;
+  height: 120px; /* línea más larga */
   background: linear-gradient(to bottom right, #FFB733, #FFD966);
-  transform: rotate(-45deg);
+  transform: rotate(-77deg); /* ajuste del ángulo */
   margin-right: 16px;
 }
 
 /* Logo NEXA */
 .logo img {
-  width: 220px;
+  width: 250px; /* más grande */
   max-width: 95%;
 }
 
@@ -92,7 +92,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 180px; /* más espacio desde el logo */
+  margin-top: 240px; /* contenido más abajo para que el logo respire */
   width: 100%;
 }
 
