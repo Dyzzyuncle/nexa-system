@@ -21,8 +21,8 @@ html, body {
 
 body {
   font-family: 'Anonymous Pro', monospace;
-  background: #d1d1d1; /* gris clarito */
-  color: #FFB733;
+  background: #1e1e1e; /* gris oscuro */
+  color: #FFB733; /* dorado */
 
   display: flex;
   flex-direction: column;
@@ -30,7 +30,7 @@ body {
   align-items: center;
 
   padding: 36px 20px;
-  border: 3px solid rgba(255,183,51,0.6);
+  border: 3px solid rgba(255,255,255,0.6);
 }
 
 /* Líneas superior / inferior */
@@ -42,33 +42,30 @@ body::after {
   background: linear-gradient(
     to right,
     transparent,
-    rgba(255,255,255,0.4),
+    rgba(255,255,255,0.9),
     transparent
   );
 }
 
-body::before {
-  top: 120px; /* baja la línea para logo */
-  position: absolute;
+body::after {
+  opacity: 0.6;
 }
 
-body::after {
-  bottom: 0;
-  opacity: 0.6;
-  position: absolute;
+/* LOGO */
+.logo {
+  margin-bottom: 28px;
+}
+
+.logo img {
+  width: 260px;
+  max-width: 85%;
+  display: block;
+  margin: 0 auto;
 }
 
 /* HEADER */
 header {
   text-align: center;
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.logo {
-  width: 200px;
-  max-width: 90%;
-  margin-bottom: 16px;
 }
 
 h1 {
@@ -100,7 +97,7 @@ h1 {
 .estado::after {
   content: "";
   position: absolute;
-  top: calc(50% - 8px); /* corrección óptica */
+  top: calc(50% - 8px);
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
@@ -110,21 +107,21 @@ h1 {
 .estado::before {
   width: 360px;
   height: 360px;
-  border: 2px solid rgba(255,255,255,0.35);
+  border: 2px solid rgba(255,255,255,0.8);
   box-shadow:
-    0 0 30px rgba(255,255,255,0.35),
-    0 0 70px rgba(255,255,255,0.25),
-    0 0 140px rgba(255,255,255,0.15);
+    0 0 30px rgba(255,255,255,0.75),
+    0 0 70px rgba(255,255,255,0.45),
+    0 0 140px rgba(255,255,255,0.3);
   animation: haloPulse 3.8s ease-in-out infinite;
 }
 
 .estado::after {
   width: 420px;
   height: 420px;
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.55);
   box-shadow:
-    0 0 45px rgba(255,255,255,0.2),
-    0 0 100px rgba(255,255,255,0.15);
+    0 0 45px rgba(255,255,255,0.4),
+    0 0 100px rgba(255,255,255,0.25);
   animation: haloPulse 3.8s ease-in-out infinite;
   animation-delay: 1.2s;
 }
@@ -132,15 +129,15 @@ h1 {
 @keyframes haloPulse {
   0% {
     transform: translate(-50%, -50%) scale(1);
-    opacity: 0.35;
+    opacity: 0.45;
   }
   50% {
     transform: translate(-50%, -50%) scale(1.08);
-    opacity: 0.5;
+    opacity: 1;
   }
   100% {
     transform: translate(-50%, -50%) scale(1);
-    opacity: 0.35;
+    opacity: 0.45;
   }
 }
 
@@ -173,10 +170,14 @@ footer {
 
 <body>
 
+<!-- LOGO PRINCIPAL -->
+<div class="logo">
+  <img src="img/nexa-logo.png" alt="NEXA Logo">
+</div>
+
 <header>
-  <img src="img/logo_nexa.png" alt="NEXA" class="logo">
   <h1>Registro de Pago</h1>
-  <div class="codigo">Tarjeta estudiantil · NEXA-001-CFPM</div>
+  <div class="codigo">Tarjeta estudiantil · NEXA-001</div>
 </header>
 
 <section class="estado">
