@@ -21,14 +21,12 @@ html, body {
 
 body {
   font-family: 'Anonymous Pro', monospace;
-  background: #1e1e1e; /* gris oscuro */
+  background: #bfbfbf; /* gris claro */
   color: #FFB733; /* dorado */
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
   padding: 36px 20px;
   border: 3px solid rgba(255,255,255,0.6);
 }
@@ -53,19 +51,31 @@ body::after {
 
 /* LOGO */
 .logo {
-  margin-bottom: 28px;
+  margin-bottom: 16px;
+  text-align: center;
+  width: 100%;
 }
 
 .logo img {
-  width: 260px;
-  max-width: 85%;
+  width: 320px; /* más grande */
+  max-width: 90%;
   display: block;
   margin: 0 auto;
+}
+
+.logo::after {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 2px;
+  background: white;
+  margin: 12px auto 0 auto; /* línea blanca debajo del logo */
 }
 
 /* HEADER */
 header {
   text-align: center;
+  margin-bottom: 24px;
 }
 
 h1 {
@@ -97,7 +107,7 @@ h1 {
 .estado::after {
   content: "";
   position: absolute;
-  top: calc(50% - 8px);
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
