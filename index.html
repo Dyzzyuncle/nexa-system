@@ -21,7 +21,7 @@ html, body {
 
 body {
   font-family: 'Anonymous Pro', monospace;
-  background: #bfbfbf; /* gris claro */
+  background: #1e1e1e; /* gris oscuro */
   color: #FFB733; /* dorado */
   display: flex;
   flex-direction: column;
@@ -45,19 +45,25 @@ body::after {
   );
 }
 
+body::before {
+  top: 0;
+  position: absolute;
+}
+
 body::after {
   opacity: 0.6;
 }
 
 /* LOGO */
 .logo {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   text-align: center;
   width: 100%;
+  position: relative;
 }
 
 .logo img {
-  width: 320px; /* más grande */
+  width: 400px; /* logo más grande */
   max-width: 90%;
   display: block;
   margin: 0 auto;
