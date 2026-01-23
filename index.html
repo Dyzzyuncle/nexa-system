@@ -49,8 +49,6 @@ body::after { bottom: 0; opacity: 0.6; }
   right: 10px;
   display: flex;
   align-items: center;
-  transform: scale(1.6); /* tamaño aumentado */
-  transform-origin: top right;
 }
 
 /* Texto "Con colaboración de" */
@@ -61,29 +59,35 @@ body::after { bottom: 0; opacity: 0.6; }
   white-space: nowrap;
 }
 
-/* Línea diagonal dorada (ahora casi recta, 75-80°) */
+/* Línea diagonal dorada */
 .colab-line {
   width: 3px;
-  height: 120px; /* línea más larga */
+  height: 120px;
   background: linear-gradient(to bottom right, #FFB733, #FFD966);
-  transform: rotate(-77deg); /* ajuste del ángulo */
+  transform: rotate(-77deg); /* ajuste exacto */
   margin-right: 16px;
 }
 
 /* Logo NEXA */
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .logo img {
-  width: 250px; /* más grande */
+  width: 280px; /* más grande */
   max-width: 95%;
 }
 
-/* Línea blanca debajo del logo */
+/* Línea blanca pegada al logo */
 .logo::after {
   content: "";
   display: block;
-  width: 100%;
+  width: 120px; /* achicada */
   height: 3px;
   background: linear-gradient(to right, rgba(255,255,255,0.85), rgba(255,255,255,0.5));
-  margin-top: 6px;
+  margin-top: 4px; /* más pegada al logo */
   border-radius: 2px;
 }
 
@@ -92,14 +96,14 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 240px; /* contenido más abajo para que el logo respire */
+  margin-top: 280px; /* contenido bajado */
   width: 100%;
 }
 
 /* HEADER */
 header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 h1 {
@@ -117,7 +121,7 @@ h1 {
 .estado {
   position: relative;
   text-align: center;
-  margin: 50px 0;
+  margin: 60px 0;
 }
 
 .estado img {
@@ -178,7 +182,7 @@ h1 {
   font-size: 28px;
   line-height: 2.5;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 .info span {
