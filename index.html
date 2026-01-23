@@ -30,7 +30,7 @@ body {
   align-items: center;
 
   padding: 36px 20px;
-  border: 3px solid rgba(255,255,255,0.6); /* borde blanco translúcido */
+  border: 3px solid rgba(255,255,255,0.6);
 }
 
 /* Líneas superior / inferior */
@@ -49,6 +49,18 @@ body::after {
 
 body::after {
   opacity: 0.6;
+}
+
+/* LOGO */
+.logo {
+  margin-bottom: 28px;
+}
+
+.logo img {
+  width: 260px;
+  max-width: 85%;
+  display: block;
+  margin: 0 auto;
 }
 
 /* HEADER */
@@ -157,6 +169,11 @@ footer {
 </head>
 
 <body>
+
+<!-- LOGO PRINCIPAL -->
+<div class="logo">
+  <img src="img/nexa-logo.png" alt="NEXA Logo">
+</div>
 
 <header>
   <h1>Registro de Pago</h1>
