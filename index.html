@@ -56,26 +56,25 @@ body::after {
 
 /* LOGO */
 .logo {
-  margin-bottom: 24px;
-  text-align: center;
   width: 100%;
+  text-align: right; /* logo a la derecha */
   position: relative;
+  margin-bottom: 24px;
 }
 
 .logo img {
-  width: 400px; /* logo más grande */
+  width: 400px; /* logo grande */
   max-width: 90%;
-  display: block;
-  margin: 0 auto;
 }
 
 .logo::after {
   content: "";
   display: block;
-  width: 70%;
+  width: 50%; /* más elegante, más corto */
   height: 2px;
-  background: white;
-  margin: 12px auto 0 auto; /* línea blanca debajo del logo */
+  background: linear-gradient(to right, rgba(255,255,255,0.7), rgba(255,255,255,0.3));
+  margin: 8px 0 0 auto; /* se alinea a la derecha con el logo */
+  border-radius: 2px;
 }
 
 /* HEADER */
