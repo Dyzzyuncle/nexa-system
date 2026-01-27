@@ -1,150 +1,214 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Registro de Pago · NEXA</title>
+<meta charset="UTF-8">
+<title>Registro de Pago – NEXA</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap" rel="stylesheet">
 
-    body {
-      margin: 0;
-      background: #1f1f1f;
-      color: #d4af37;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<style>
+* { box-sizing: border-box; }
 
-    /* ===== HEADER NEXA ===== */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
 
-    .nexa-collab {
-      position: relative;
-      height: 150px;
-      width: 100%;
-    }
+body {
+  font-family: 'Anonymous Pro', monospace;
+  background: #1e1e1e;
+  color: #FFB733;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 20px;
+  border: 3px solid rgba(255,255,255,0.6);
+  position: relative;
+}
 
-    .collab-text {
-      position: absolute;
-      top: 42px;
-      right: 250px;
-      font-size: 14px;
-      white-space: nowrap;
-    }
+/* Líneas superior / inferior */
+body::before,
+body::after {
+  content: "";
+  width: 85%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.9), transparent);
+  position: absolute;
+}
 
-    .diagonal-line {
-      position: absolute;
-      top: 52px;
-      right: 190px;
-      width: 90px;
-      height: 2px;
-      background: #d4af37;
-      transform: rotate(77deg);
-      transform-origin: left center;
-    }
+body::before { top: 0; }
+body::after { bottom: 0; opacity: 0.6; }
 
-    .nexa-block {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      text-align: center;
-    }
+/* ===== LOGO + COLAB ===== */
+.logo-colab {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+}
 
-    .nexa-block img {
-      width: 120px;
-      display: block;
-      margin: 0 auto;
-    }
+/* Texto */
+.colab-text {
+  font-size: 22px;
+  margin-right: 14px;
+  white-space: nowrap;
+}
 
-    .nexa-line {
-      margin: 6px auto 0;
-      width: 55px;
-      height: 2px;
-      background: #ffffff;
-    }
+/* Línea diagonal CORREGIDA */
+.colab-line {
+  width: 2px;
+  height: 110px;
+  background: linear-gradient(to bottom, #FFB733, #FFD966);
+  transform: rotate(77deg); /* ángulo exacto */
+  margin-right: 14px;
+}
 
-    /* ===== CONTENIDO ===== */
+/* Logo */
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* CENTRA la línea debajo */
+}
 
-    main {
-      margin-top: 30px;
-      text-align: center;
-      padding: 0 20px;
-    }
+.logo img {
+  width: 260px;
+  display: block;
+}
 
-    h1 {
-      font-size: 28px;
-      margin: 0;
-    }
+/* Línea blanca DEBAJO y centrada */
+.logo::after {
+  content: "";
+  width: 90px;
+  height: 3px;
+  background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+  margin-top: 6px;
+  border-radius: 2px;
+}
 
-    .sub {
-      font-size: 14px;
-      margin-top: 6px;
-      margin-bottom: 40px;
-      opacity: 0.9;
-    }
+/* ===== CONTENIDO ===== */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 260px;
+  width: 100%;
+}
 
-    .status {
-      margin: 40px 0;
-    }
+header {
+  text-align: center;
+  margin-bottom: 60px;
+}
 
-    .status img {
-      width: 190px;
-      display: block;
-      margin: 0 auto 16px;
-    }
+h1 {
+  font-size: 56px;
+  margin: 0;
+}
 
-    .status span {
-      font-size: 20px;
-      letter-spacing: 2px;
-    }
+.codigo {
+  font-size: 30px;
+  margin-top: 14px;
+}
 
-    .month {
-      margin-top: 30px;
-      font-size: 15px;
-    }
+/* ESTADO */
+.estado {
+  position: relative;
+  text-align: center;
+  margin: 60px 0;
+}
 
-    .info {
-      margin-top: 18px;
-      font-size: 14px;
-      opacity: 0.9;
-    }
+.estado img {
+  width: 300px;
+  position: relative;
+  z-index: 3;
+}
 
-    .footer {
-      margin-top: 50px;
-      font-size: 12px;
-      opacity: 0.6;
-    }
-  </style>
+/* HALOS */
+.estado::before,
+.estado::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.estado::before {
+  width: 400px;
+  height: 400px;
+  border: 2px solid rgba(255,255,255,0.8);
+  box-shadow:
+    0 0 40px rgba(255,255,255,0.75),
+    0 0 80px rgba(255,255,255,0.45),
+    0 0 160px rgba(255,255,255,0.3);
+}
+
+.estado::after {
+  width: 460px;
+  height: 460px;
+  border: 1px solid rgba(255,255,255,0.55);
+  box-shadow:
+    0 0 60px rgba(255,255,255,0.4),
+    0 0 120px rgba(255,255,255,0.25);
+}
+
+.estado-texto {
+  font-size: 50px;
+  margin-top: 42px;
+  letter-spacing: 4px;
+}
+
+/* INFO */
+.info {
+  font-size: 28px;
+  line-height: 2.5;
+  text-align: center;
+  margin-top: 40px;
+}
+
+footer {
+  font-size: 22px;
+  opacity: 0.75;
+  margin-top: 30px;
+}
+</style>
 </head>
 
 <body>
 
-  <header class="nexa-collab">
-    <div class="collab-text">Con colaboración de</div>
-    <div class="diagonal-line"></div>
+<div class="logo-colab">
+  <div class="colab-text">Con colaboración de</div>
+  <div class="colab-line"></div>
+  <div class="logo">
+    <img src="img/nexa-logo.png" alt="NEXA Logo">
+  </div>
+</div>
 
-    <div class="nexa-block">
-      <img src="img/nexa-logo.png" alt="NEXA">
-      <div class="nexa-line"></div>
-    </div>
+<main>
+  <header>
+    <h1>Registro de Pago</h1>
+    <div class="codigo">Tarjeta estudiantil · NEXA-001</div>
   </header>
 
-  <main>
-    <h1>Registro de Pago</h1>
-    <div class="sub">Tarjeta estudiantil · NEXA-001</div>
+  <section class="estado">
+    <img src="img/check.png" alt="Pago registrado">
+    <div class="estado-texto">PAGO REGISTRADO</div>
+  </section>
 
-    <div class="status">
-      <img src="img/check.png" alt="Pago registrado">
-      <span>PAGO REGISTRADO</span>
-    </div>
+  <section class="info">
+    <span>📅 Mes vigente: <strong>Marzo 2026</strong></span>
+    <span>📌 Este registro se actualiza mensualmente</span>
+    <span>🔒 Información de carácter informativo</span>
+  </section>
 
-    <div class="month">📅 Mes vigente: <strong>Marzo 2026</strong></div>
-    <div class="info">📌 Este registro se actualiza mensualmente</div>
-
-    <div class="footer">
-      Sistema de verificación · GitHub Pages
-    </div>
-  </main>
+  <footer>
+    Sistema de verificación · GitHub Pages
+  </footer>
+</main>
 
 </body>
 </html>
