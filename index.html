@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+            <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -17,12 +17,9 @@
             background-color: #1e1e1e;
             color: #FFB733;
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             min-height: 100vh;
             padding: 20px;
-            border: 4px solid rgba(255, 217, 102, 0.1); /* Marco sutil */
+            border: 4px solid rgba(255, 217, 102, 0.1);
         }
 
         /* Línea decorativa superior */
@@ -33,47 +30,67 @@
             background: linear-gradient(to right, transparent, #FFB733, transparent);
             position: absolute;
             top: 10px;
+            left: 10%;
         }
 
-        /* BLOQUE LOGO SUPERIOR */
-        .header-brand {
+        /* HEADER CON DIAGONAL */
+        .header-wrapper {
             width: 100%;
-            max-width: 600px;
+            max-width: 900px;
+            margin: 20px auto 50px;
+            position: relative;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
-            margin-top: 20px;
-            margin-bottom: 40px;
         }
 
-        .colab-tag {
+        /* Línea diagonal */
+        .diagonal-line {
+            position: absolute;
+            right: 140px;
+            top: -20px;
+            width: 2px;
+            height: 140px;
+            background: rgba(255,255,255,0.7);
+            transform: rotate(20deg);
+            transform-origin: top;
+        }
+
+        /* Línea blanca horizontal cerca del logo */
+        .logo-line {
+            position: absolute;
+            right: 140px;
+            bottom: 10px;
+            width: 120px;
+            height: 1px;
+            background: rgba(255,255,255,0.6);
+        }
+
+        /* Texto a la izquierda */
+        .header-text {
             font-size: 12px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-right: 15px;
             opacity: 0.8;
         }
 
+        /* Logo */
         .brand-logo {
-            width: 120px; /* Ajustado para que no rompa el layout */
+            width: 120px;
             filter: drop-shadow(0 0 5px rgba(255, 183, 51, 0.3));
+            z-index: 2;
         }
 
-        /* CONTENIDO PRINCIPAL */
         main {
-            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             text-align: center;
-            width: 100%;
         }
 
         h1 {
             font-size: 2.5rem;
             margin: 0;
-            letter-spacing: -1px;
             color: #ffffff;
         }
 
@@ -86,7 +103,6 @@
             border: 1px solid #FFB733;
         }
 
-        /* EL HALO Y EL CHECK */
         .status-container {
             position: relative;
             margin: 60px 0;
@@ -98,11 +114,9 @@
         .status-img {
             width: 180px;
             height: 180px;
-            position: relative;
             z-index: 5;
         }
 
-        /* Animación del Halo */
         .halo {
             position: absolute;
             width: 220px;
@@ -110,7 +124,6 @@
             border: 2px solid rgba(255, 255, 255, 0.5);
             border-radius: 50%;
             animation: pulse 2.5s infinite ease-in-out;
-            z-index: 1;
         }
 
         .halo-outer {
@@ -120,34 +133,29 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             animation: pulse 2.5s infinite ease-in-out 0.5s;
-            z-index: 1;
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 0px rgba(255,255,255,0); }
-            50% { transform: scale(1.1); opacity: 0.3; box-shadow: 0 0 30px rgba(255,255,255,0.2); }
-            100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 0px rgba(255,255,255,0); }
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+            100% { transform: scale(1); opacity: 0.8; }
         }
 
         .status-text {
             font-size: 1.8rem;
             font-weight: bold;
-            margin-top: 20px;
             letter-spacing: 5px;
         }
 
-        /* INFO BOX */
         .data-grid {
             margin-top: 30px;
             font-size: 1rem;
             line-height: 2;
             border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 20px;
-            width: 100%;
             max-width: 400px;
         }
 
-        .data-grid span { display: block; }
         .data-grid strong { color: #fff; }
 
         footer {
@@ -156,29 +164,27 @@
             letter-spacing: 3px;
             opacity: 0.5;
             text-transform: uppercase;
-        }
-
-        /* Responsive */
-        @media (max-width: 480px) {
-            h1 { font-size: 1.8rem; }
-            .status-img { width: 140px; height: 140px; }
-            .halo { width: 170px; height: 170px; }
-            .halo-outer { width: 200px; height: 200px; }
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <div class="header-brand">
-        <span class="colab-tag">Powered by</span>
+    <div class="header-wrapper">
+        <div class="header-text">
+            Powered by<br>
+            Independent System
+        </div>
+
+        <div class="diagonal-line"></div>
+        <div class="logo-line"></div>
+
         <img src="img/nexa-logo.png" alt="NEXA" class="brand-logo">
     </div>
 
     <main>
-        <header>
-            <h1>REGISTRO DE PAGO</h1>
-            <div class="id-badge">NEXA-001-CFPM</div>
-        </header>
+        <h1>REGISTRO DE PAGO</h1>
+        <div class="id-badge">NEXA-001-CFPM</div>
 
         <div class="status-container">
             <div class="halo"></div>
@@ -196,7 +202,7 @@
     </main>
 
     <footer>
-        NEXA Infrastructure &copy; 2025 - Verified Student System
+        NEXA Infrastructure © 2025 – Verified Student System
     </footer>
 
 </body>
