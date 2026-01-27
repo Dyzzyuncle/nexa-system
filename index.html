@@ -1,209 +1,203 @@
-            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Pago – NEXA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXA – Registro de Pago</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #1c1c1c;
+  --bg-soft: #222;
+  --white: #ffffff;
+  --gray: #b0b0b0;
+  --gold: #c9a24d;
+  --green: #7fd11a;
+}
 
-    <style>
-        * { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
 
-        body {
-            font-family: 'Anonymous Pro', monospace;
-            background-color: #1e1e1e;
-            color: #FFB733;
-            margin: 0;
-            min-height: 100vh;
-            padding: 20px;
-            border: 4px solid rgba(255, 217, 102, 0.1);
-        }
+body {
+  background: radial-gradient(circle at top, #262626, var(--bg));
+  color: var(--white);
+  min-height: 100vh;
+}
 
-        /* Línea decorativa superior */
-        body::before {
-            content: "";
-            width: 80%;
-            height: 1px;
-            background: linear-gradient(to right, transparent, #FFB733, transparent);
-            position: absolute;
-            top: 10px;
-            left: 10%;
-        }
+/* ===== HEADER ===== */
+.header {
+  position: relative;
+  padding: 40px 32px 0;
+}
 
-        /* HEADER CON DIAGONAL */
-        .header-wrapper {
-            width: 100%;
-            max-width: 900px;
-            margin: 20px auto 50px;
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.powered {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 3px;
+  opacity: 0.7;
+}
 
-        /* Línea diagonal */
-        .diagonal-line {
-            position: absolute;
-            right: 140px;
-            top: -20px;
-            width: 2px;
-            height: 140px;
-            background: rgba(255,255,255,0.7);
-            transform: rotate(20deg);
-            transform-origin: top;
-        }
+.nexa-logo {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  padding: 16px 18px;
+}
 
-        /* Línea blanca horizontal cerca del logo */
-        .logo-line {
-            position: absolute;
-            right: 140px;
-            bottom: 10px;
-            width: 120px;
-            height: 1px;
-            background: rgba(255,255,255,0.6);
-        }
+.nexa-logo img {
+  width: 110px;
+  display: block;
+}
 
-        /* Texto a la izquierda */
-        .header-text {
-            font-size: 12px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            opacity: 0.8;
-        }
+/* ===== MAIN CONTENT ===== */
+.main {
+  margin-top: 80px;
+  text-align: center;
+  padding: 0 24px;
+}
 
-        /* Logo */
-        .brand-logo {
-            width: 120px;
-            filter: drop-shadow(0 0 5px rgba(255, 183, 51, 0.3));
-            z-index: 2;
-        }
+.title {
+  font-size: 36px;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+}
 
-        main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
+.system-id {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 48px;
+}
 
-        h1 {
-            font-size: 2.5rem;
-            margin: 0;
-            color: #ffffff;
-        }
+/* ===== HALO + CHECK ===== */
+.halo-wrapper {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin: 0 auto 48px;
+}
 
-        .id-badge {
-            font-size: 1.2rem;
-            margin-top: 10px;
-            background: rgba(255, 183, 51, 0.1);
-            padding: 5px 15px;
-            border-radius: 4px;
-            border: 1px solid #FFB733;
-        }
+.halo {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.08);
+  animation: breathe 7s ease-in-out infinite;
+}
 
-        .status-container {
-            position: relative;
-            margin: 60px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.halo::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.05);
+}
 
-        .status-img {
-            width: 180px;
-            height: 180px;
-            z-index: 5;
-        }
+.check-circle {
+  position: absolute;
+  inset: 36px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-        .halo {
-            position: absolute;
-            width: 220px;
-            height: 220px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            animation: pulse 2.5s infinite ease-in-out;
-        }
+.check-circle svg {
+  width: 72px;
+  height: 72px;
+  fill: #1b1b1b;
+}
 
-        .halo-outer {
-            position: absolute;
-            width: 260px;
-            height: 260px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            animation: pulse 2.5s infinite ease-in-out 0.5s;
-        }
+@keyframes breathe {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.04); opacity: 0.9; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
 
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.1); opacity: 0.3; }
-            100% { transform: scale(1); opacity: 0.8; }
-        }
+/* ===== STATUS ===== */
+.status {
+  color: var(--gold);
+  font-size: 22px;
+  letter-spacing: 6px;
+  margin-bottom: 32px;
+}
 
-        .status-text {
-            font-size: 1.8rem;
-            font-weight: bold;
-            letter-spacing: 5px;
-        }
+.separator {
+  width: 60%;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  margin: 0 auto 28px;
+}
 
-        .data-grid {
-            margin-top: 30px;
-            font-size: 1rem;
-            line-height: 2;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
-            max-width: 400px;
-        }
+.meta {
+  font-size: 15px;
+  color: var(--gray);
+  line-height: 2;
+}
 
-        .data-grid strong { color: #fff; }
+.meta span {
+  color: var(--white);
+}
 
-        footer {
-            margin-top: 50px;
-            font-size: 10px;
-            letter-spacing: 3px;
-            opacity: 0.5;
-            text-transform: uppercase;
-            text-align: center;
-        }
-    </style>
+/* ===== FOOTER ===== */
+.footer {
+  margin-top: 64px;
+  padding-bottom: 32px;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  opacity: 0.6;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="header-wrapper">
-        <div class="header-text">
-            Powered by<br>
-            Independent System
-        </div>
+<header class="header">
+  <div class="powered">POWERED BY<br>INDEPENDENT SYSTEM</div>
 
-        <div class="diagonal-line"></div>
-        <div class="logo-line"></div>
+  <div class="nexa-logo">
+    <img src="img/nexa-logo.png" alt="NEXA">
+  </div>
+</header>
 
-        <img src="img/nexa-logo.png" alt="NEXA" class="brand-logo">
+<main class="main">
+  <div class="title">REGISTRO DE PAGO</div>
+  <div class="system-id">NEXA-001-CFPM</div>
+
+  <div class="halo-wrapper">
+    <div class="halo"></div>
+    <div class="check-circle">
+      <svg viewBox="0 0 24 24">
+        <path d="M9.2 16.6L4.8 12.2L3.4 13.6L9.2 19.4L21 7.6L19.6 6.2Z"/>
+      </svg>
     </div>
+  </div>
 
-    <main>
-        <h1>REGISTRO DE PAGO</h1>
-        <div class="id-badge">NEXA-001-CFPM</div>
+  <div class="status">PAGO REGISTRADO</div>
 
-        <div class="status-container">
-            <div class="halo"></div>
-            <div class="halo-outer"></div>
-            <img src="img/check.png" alt="VALIDADO" class="status-img">
-        </div>
+  <div class="separator"></div>
 
-        <div class="status-text">PAGO REGISTRADO</div>
+  <div class="meta">
+    PERÍODO: <span>MARZO 2026</span><br>
+    SISTEMA: <span>NEXA V1.0</span><br>
+    ESTADO: <span>ACTIVO</span>
+  </div>
+</main>
 
-        <section class="data-grid">
-            <span>PERÍODO: <strong>MARZO 2026</strong></span>
-            <span>SISTEMA: <strong>NEXA V1.0</strong></span>
-            <span>ESTADO: <strong>ACTIVO</strong></span>
-        </section>
-    </main>
-
-    <footer>
-        NEXA Infrastructure © 2025 – Verified Student System
-    </footer>
+<footer class="footer">
+  NEXA INFRASTRUCTURE © 2025 — VERIFIED STUDENT SYSTEM
+</footer>
 
 </body>
 </html>
