@@ -42,62 +42,69 @@ body::after {
 body::before { top: 0; }
 body::after { bottom: 0; opacity: 0.6; }
 
-/* ===== LOGO + COLAB ===== */
+/* BLOQUE COLABORACIÓN */
 .logo-colab {
   position: absolute;
   top: 14px;
-  right: 18px;
+  right: 20px;
   display: flex;
   align-items: center;
+  gap: 18px;
 }
 
 /* Texto */
 .colab-text {
-  font-size: 22px;
-  margin-right: 14px;
+  color: #FFB733;
+  font-size: 26px;
   white-space: nowrap;
 }
 
 /* Línea diagonal CORREGIDA */
 .colab-line {
-  width: 2px;
-  height: 110px;
+  width: 3px;
+  height: 90px;
   background: linear-gradient(to bottom, #FFB733, #FFD966);
-  transform: rotate(77deg); /* ángulo exacto */
-  margin-right: 14px;
+  transform: rotate(77deg);
+  transform-origin: center;
 }
 
 /* Logo */
 .logo {
   display: flex;
   flex-direction: column;
-  align-items: center; /* CENTRA la línea debajo */
+  align-items: center;
 }
 
 .logo img {
   width: 260px;
-  display: block;
+  max-width: 95%;
 }
 
-/* Línea blanca DEBAJO y centrada */
+/* Línea blanca centrada bajo NEXA */
 .logo::after {
   content: "";
-  width: 90px;
+  width: 110px;
   height: 3px;
-  background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
   margin-top: 6px;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0.4),
+    rgba(255,255,255,0.95),
+    rgba(255,255,255,0.4)
+  );
   border-radius: 2px;
 }
 
-/* ===== CONTENIDO ===== */
+/* CONTENIDO */
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 260px;
+  margin-top: 280px;
   width: 100%;
 }
 
+/* HEADER */
 header {
   text-align: center;
   margin-bottom: 60px;
@@ -122,6 +129,7 @@ h1 {
 
 .estado img {
   width: 300px;
+  max-width: 85%;
   position: relative;
   z-index: 3;
 }
@@ -141,25 +149,20 @@ h1 {
   width: 400px;
   height: 400px;
   border: 2px solid rgba(255,255,255,0.8);
-  box-shadow:
-    0 0 40px rgba(255,255,255,0.75),
-    0 0 80px rgba(255,255,255,0.45),
-    0 0 160px rgba(255,255,255,0.3);
+  box-shadow: 0 0 40px rgba(255,255,255,0.6);
 }
 
 .estado::after {
   width: 460px;
   height: 460px;
-  border: 1px solid rgba(255,255,255,0.55);
-  box-shadow:
-    0 0 60px rgba(255,255,255,0.4),
-    0 0 120px rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.5);
+  box-shadow: 0 0 80px rgba(255,255,255,0.35);
 }
 
 .estado-texto {
   font-size: 50px;
-  margin-top: 42px;
   letter-spacing: 4px;
+  margin-top: 42px;
 }
 
 /* INFO */
@@ -170,9 +173,16 @@ h1 {
   margin-top: 40px;
 }
 
+.info span {
+  display: block;
+  margin-top: 18px;
+}
+
+/* FOOTER */
 footer {
   font-size: 22px;
   opacity: 0.75;
+  text-align: center;
   margin-top: 30px;
 }
 </style>
