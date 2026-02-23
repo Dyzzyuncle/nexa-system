@@ -68,14 +68,16 @@ body::before{
 .right{
     display:flex;
     flex-direction:column;
-    align-items:center; /* LOGO CENTRADO */
+    align-items:center;
     min-width:190px;
 }
 
+/* Logo ajustado verticalmente */
 .right img{
     width:190px;
     display:block;
-    margin-bottom:-18px; /* corrige padding interno del PNG */
+    margin-top:8px;      /* BAJA el logo */
+    margin-bottom:-18px; /* corrige padding invisible del PNG */
 }
 
 .logo-line{
