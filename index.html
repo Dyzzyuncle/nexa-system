@@ -3,224 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Registro de Pago – NEXA</title>
+<title>NEXA - Registro de Pago</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-
 body{
-    font-family:'Anonymous Pro',monospace;
-    background:#1e1e1e;
-    color:#FFB733;
-    min-height:100vh;
-    padding:20px;
-    position:relative;
-    border:4px solid rgba(255,217,102,0.08);
-}
-
-/* Línea decorativa superior */
-body::before{
-    content:"";
-    position:absolute;
-    top:12px;
-    left:10%;
-    width:80%;
-    height:1px;
-    background:linear-gradient(to right,transparent,#FFB733,transparent);
-}
-
-/* ===== HEADER ===== */
-
-.header{
-    position:absolute;
-    top:25px; /* SUBE TODO EL BLOQUE */
-    left:0;
-    width:100%;
-    padding:0 60px;
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-}
-
-/* Lado izquierdo */
-.left{
-    display:flex;
-    flex-direction:column;
-}
-
-.colab{
-    font-size:14px;
-    letter-spacing:4px;
-    line-height:22px;
-    color:#d4a843;
-}
-
-.colab-line{
-    margin-top:8px;
-    width:140px;
-    height:2px;
-    background:#d4a843;
-}
-
-/* Lado derecho */
-.right{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-end;
-}
-
-.right img{
-    width:190px;
-    display:block;
-    margin-bottom:-18px; /* CORRIGE ESPACIO TRANSPARENTE DEL PNG */
-}
-
-.logo-line{
-    margin-top:8px;
-    width:90px;
-    height:2px;
-    background:#ffffff;
-}
-
-/* ===== CONTENIDO ===== */
-
-main{
-    margin-top:220px; /* MÁS ESPACIO PARA QUE NO SE SUPERPONGA */
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-}
-
-h1{
-    font-size:2.7rem;
-    color:#ffffff;
-    letter-spacing:4px;
-}
-
-.badge{
-    margin-top:15px;
-    padding:6px 18px;
-    border:1px solid #FFB733;
-    border-radius:6px;
-    font-size:1.2rem;
-    background:rgba(255,183,51,0.1);
-}
-
-.status-box{
-    position:relative;
-    margin:70px 0;
+    margin:0;
+    padding:0;
+    background:#111;
+    font-family:'Montserrat', sans-serif;
+    color:white;
     display:flex;
     justify-content:center;
-    align-items:center;
 }
 
-.status-img{
-    width:190px;
-    height:190px;
-    z-index:2;
-}
-
-.halo1,.halo2{
-    position:absolute;
-    border-radius:50%;
-}
-
-.halo1{
-    width:240px;
-    height:240px;
-    border:2px solid rgba(255,255,255,0.4);
-    animation:pulse 2.5s infinite ease-in-out;
-}
-
-.halo2{
-    width:290px;
-    height:290px;
-    border:1px solid rgba(255,255,255,0.15);
-    animation:pulse 2.5s infinite ease-in-out .6s;
-}
-
-@keyframes pulse{
-    0%{transform:scale(1);opacity:.8;}
-    50%{transform:scale(1.1);opacity:.3;}
-    100%{transform:scale(1);opacity:.8;}
-}
-
-.status-text{
-    font-size:1.9rem;
-    letter-spacing:6px;
-    font-weight:bold;
-}
-
-.info{
-    margin-top:40px;
-    border-top:1px solid rgba(255,255,255,0.08);
-    padding-top:25px;
-    line-height:30px;
-    font-size:1rem;
-}
-
-.info strong{
-    color:#ffffff;
-}
-
-footer{
-    margin-top:60px;
+.container{
+    width:100%;
+    max-width:500px;
+    padding:40px 20px;
     text-align:center;
-    font-size:10px;
-    letter-spacing:3px;
-    opacity:.4;
 }
+
+/* Sección superior */
+.top-section{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+}
+
+/* Texto lateral */
+.left-text{
+    text-align:left;
+    color:#caa54a;
+    letter-spacing:4px;
+    font-size:14px;
+}
+
+.left-text hr{
+    width:120px;
+    border:1px solid #caa54a;
+    margin-top:10px;
+}
+
+/* Logo */
+.logo-container{
+    display:flex;
+    justify-content:center;
+    margin-top:30px; /* AQUÍ lo bajamos */
+}
+
+.logo{
+    font-size:28px;
+    font-weight:600;
+    color:#caa54a;
+}
+
+/* Línea blanca */
+.white-line{
+    width:120px;
+    height:2px;
+    background:white;
+    margin:20px auto 0 auto; /* centrada */
+}
+
+/* Título */
+.title{
+    margin-top:50px;
+    font-size:36px;
+    letter-spacing:8px;
+}
+
+/* Código */
+.code{
+    margin-top:25px;
+    display:inline-block;
+    padding:12px 25px;
+    border:2px solid #caa54a;
+    border-radius:8px;
+    color:#caa54a;
+    font-weight:600;
+}
+
+/* Check círculo */
+.check-container{
+    margin-top:60px;
+    display:flex;
+    justify-content:center;
+}
+
+.check-circle{
+    width:180px;
+    height:180px;
+    background:#7ED321;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:90px;
+    color:#111;
+}
+
+/* Texto inferior */
+.success-text{
+    margin-top:50px;
+    font-size:28px;
+    letter-spacing:6px;
+    color:#caa54a;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="header">
+<div class="container">
 
-    <div class="left">
-        <div class="colab">
+    <div class="top-section">
+        <div class="left-text">
             CON<br>
             COLABORACIÓN<br>
             DE
+            <hr>
         </div>
-        <div class="colab-line"></div>
     </div>
 
-    <div class="right">
-        <img src="img/nexa-logo.png" alt="NEXA">
-        <div class="logo-line"></div>
+    <div class="logo-container">
+        <div class="logo">NEXA</div>
+    </div>
+
+    <div class="white-line"></div>
+
+    <div class="title">
+        REGISTRO DE<br>PAGO
+    </div>
+
+    <div class="code">
+        NEXA-001-CFPM
+    </div>
+
+    <div class="check-container">
+        <div class="check-circle">
+            ✓
+        </div>
+    </div>
+
+    <div class="success-text">
+        PAGO REGISTRADO
     </div>
 
 </div>
-
-<main>
-
-    <h1>REGISTRO DE PAGO</h1>
-
-    <div class="badge">NEXA-001-CFPM</div>
-
-    <div class="status-box">
-        <div class="halo1"></div>
-        <div class="halo2"></div>
-        <img src="img/check.png" class="status-img" alt="Validado">
-    </div>
-
-    <div class="status-text">PAGO REGISTRADO</div>
-
-    <div class="info">
-        PERÍODO: <strong>MARZO 2026</strong><br>
-        SISTEMA: <strong>NEXA V1.0</strong><br>
-        ESTADO: <strong>ACTIVO</strong>
-    </div>
-
-</main>
-
-<footer>
-NEXA INFRASTRUCTURE © 2025 – VERIFIED STUDENT SYSTEM
-</footer>
 
 </body>
 </html>
