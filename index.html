@@ -32,7 +32,7 @@ body::before{
     background:linear-gradient(to right,transparent,#FFB733,transparent);
 }
 
-/* ================= HEADER ================= */
+/* ===== HEADER ===== */
 
 .header{
     position:absolute;
@@ -45,25 +45,19 @@ body::before{
     align-items:flex-start;
 }
 
-/* Texto colaboración */
+/* Bloque izquierdo */
 .colab{
-    position:relative;
     color:#d4a843;
     font-size:14px;
     letter-spacing:4px;
-    line-height:20px;
+    line-height:22px;
 }
 
-/* Línea diagonal EXACTA 77° */
-.diagonal{
-    position:absolute;
-    top:8px;
-    left:170px;
-    width:2px;
-    height:120px;
+.colab-line{
+    width:140px;
+    height:2px;
     background:#d4a843;
-    transform:rotate(77deg);
-    transform-origin:top left;
+    margin-top:8px;
 }
 
 /* Logo */
@@ -77,7 +71,7 @@ body::before{
     display:block;
 }
 
-/* Línea blanca pequeña */
+/* Línea blanca corta */
 .logo-line{
     position:absolute;
     right:0;
@@ -87,7 +81,7 @@ body::before{
     background:rgba(255,255,255,0.9);
 }
 
-/* ================= CONTENIDO ================= */
+/* ===== CONTENIDO ===== */
 
 main{
     margin-top:190px;
@@ -113,7 +107,6 @@ h1{
     background:rgba(255,183,51,0.1);
 }
 
-/* Estado visual */
 .status-box{
     position:relative;
     margin:70px 0;
@@ -159,7 +152,6 @@ h1{
     font-weight:bold;
 }
 
-/* Info */
 .info{
     margin-top:40px;
     border-top:1px solid rgba(255,255,255,0.08);
@@ -184,9 +176,11 @@ footer{
 
 <div class="header">
 
-    <div class="colab">
-        CON<br>COLABORACIÓN<br>DE
-        <div class="diagonal"></div>
+    <div>
+        <div class="colab">
+            CON<br>COLABORACIÓN<br>DE
+        </div>
+        <div class="colab-line"></div>
     </div>
 
     <div class="logo-wrap">
