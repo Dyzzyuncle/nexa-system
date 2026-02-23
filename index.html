@@ -62,9 +62,10 @@ body::before{
 
 /* Logo */
 .logo-wrap{
-    position:relative;
-    text-align:right;
-    margin-top:-6px; /* Ajuste fino de alineación */
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    justify-content:flex-start;
 }
 
 .logo-wrap img{
@@ -74,12 +75,10 @@ body::before{
 
 /* Línea blanca debajo del logo */
 .logo-line{
-    position:absolute;
-    right:0;
-    bottom:-6px;
     width:90px;
     height:2px;
     background:rgba(255,255,255,0.9);
+    margin-top:6px;
 }
 
 /* ===== CONTENIDO ===== */
