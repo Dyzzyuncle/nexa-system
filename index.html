@@ -163,6 +163,15 @@ footer{
     letter-spacing:3px;
     opacity:.4;
 }
+
+/* RESUMEN PERSONAL */
+#resumen{
+    margin-top:35px;
+    padding-top:25px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    line-height:28px;
+    display:none;
+}
 </style>
 
 <script src="datos.js" defer></script>
@@ -178,6 +187,7 @@ const badge = document.getElementById("codigo");
 const estadoTexto = document.getElementById("estado");
 const estadoSecundario = document.getElementById("estado-secundario");
 const imagen = document.getElementById("imagen");
+const resumenDiv = document.getElementById("resumen");
 
 if(codigo){
     badge.textContent = codigo;
@@ -204,6 +214,15 @@ if(codigo){
             imagen.src = "img/check-dorado.png";
         }
 
+        /* ===== RESUMEN PERSONAL ===== */
+        resumenDiv.style.display = "block";
+
+        resumenDiv.innerHTML = `
+            PLAN ACTUAL: <strong>${estado.toUpperCase()}</strong><br>
+            CLASES RESTANTES: <strong>8</strong><br>
+            PRÓXIMO VENCIMIENTO: <strong>30 MARZO 2026</strong>
+        `;
+
     }else{
         estadoTexto.textContent = "CÓDIGO INVÁLIDO";
         estadoSecundario.textContent = "ERROR";
@@ -215,38 +234,6 @@ if(codigo){
     estadoTexto.textContent = "NO IDENTIFICADO";
     estadoSecundario.textContent = "ERROR";
     imagen.src = "img/cross.png";
-}
-
-/* =========================
-   PANEL ADMINISTRADOR
-========================= */
-
-if(esAdmin && typeof alumnos !== "undefined"){
-
-    const panel = document.getElementById("adminPanel");
-    panel.style.display = "block";
-
-    let totalBase = 0;
-    let totalPlus = 0;
-    let totalNoPago = 0;
-
-    for(const key in alumnos){
-        if(alumnos[key] === "base") totalBase++;
-        if(alumnos[key] === "plus") totalPlus++;
-        if(alumnos[key] === "nopago") totalNoPago++;
-    }
-
-    document.getElementById("totalBase").textContent = totalBase;
-    document.getElementById("totalPlus").textContent = totalPlus;
-    document.getElementById("totalNoPago").textContent = totalNoPago;
-
-    const precioBase = 1000;
-    const precioPlus = 2000;
-
-    const ingreso = (totalBase * precioBase) + (totalPlus * precioPlus);
-
-    document.getElementById("ingresoEstimado").textContent = "$" + ingreso;
-
 }
 
 });
@@ -290,21 +277,8 @@ if(esAdmin && typeof alumnos !== "undefined"){
     ESTADO: <strong id="estado-secundario">---</strong>
 </div>
 
-<!-- PANEL ADMINISTRADOR -->
-<div id="adminPanel" style="display:none; margin-top:60px; border-top:1px solid rgba(255,255,255,0.08); padding-top:30px;">
-
-    <div class="status-text" style="font-size:1.4rem; letter-spacing:3px; margin-bottom:25px;">
-        PANEL ADMINISTRATIVO
-    </div>
-
-    <div class="info" style="margin-top:0;">
-        PLAN BASE: <strong id="totalBase">0</strong><br>
-        PLAN PLUS: <strong id="totalPlus">0</strong><br>
-        SIN PAGO: <strong id="totalNoPago">0</strong><br><br>
-        INGRESO ESTIMADO: <strong id="ingresoEstimado">$0</strong>
-    </div>
-
-</div>
+<!-- RESUMEN PERSONAL -->
+<div id="resumen"></div>
 
 </main>
 
