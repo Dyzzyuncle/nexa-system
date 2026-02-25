@@ -11,228 +11,228 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 
 body{
-font-family:'Anonymous Pro', monospace;
-background:#1e1e1e;
-color:#FFB733;
-min-height:100vh;
-padding:20px;
-position:relative;
-border:4px solid rgba(255,217,102,0.08);
+    font-family:'Anonymous Pro', monospace;
+    background:#1e1e1e;
+    color:#FFB733;
+    min-height:100vh;
+    padding:20px;
+    position:relative;
+    border:4px solid rgba(255,217,102,0.08);
 }
 
 body::before{
-content:"";
-position:absolute;
-top:12px;
-left:10%;
-width:80%;
-height:1px;
-background:linear-gradient(to right,transparent,#FFB733,transparent);
+    content:"";
+    position:absolute;
+    top:12px;
+    left:10%;
+    width:80%;
+    height:1px;
+    background:linear-gradient(to right,transparent,#FFB733,transparent);
 }
 
 .header{
-position:absolute;
-top:25px;
-left:0;
-width:100%;
-padding:0 60px;
-display:flex;
-justify-content:space-between;
-align-items:flex-end;
+    position:absolute;
+    top:25px;
+    left:0;
+    width:100%;
+    padding:0 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
 }
 
 .left{display:flex;flex-direction:column;}
 
 .colab{
-font-size:14px;
-letter-spacing:4px;
-line-height:22px;
-color:#d4a843;
+    font-size:14px;
+    letter-spacing:4px;
+    line-height:22px;
+    color:#d4a843;
 }
 
 .colab-line{
-margin-top:8px;
-width:140px;
-height:2px;
-background:#d4a843;
+    margin-top:8px;
+    width:140px;
+    height:2px;
+    background:#d4a843;
 }
 
 .right{
-display:flex;
-flex-direction:column;
-align-items:center;
-min-width:190px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    min-width:190px;
 }
 
 .right img{
-width:190px;
-display:block;
-margin-bottom:-18px;
-transform:translateY(8px);
+    width:190px;
+    display:block;
+    margin-bottom:-18px;
+    transform:translateY(8px);
 }
 
 .logo-line{
-margin-top:8px;
-width:90px;
-height:2px;
-background:#ffffff;
+    margin-top:8px;
+    width:90px;
+    height:2px;
+    background:#ffffff;
 }
 
 main{
-margin-top:220px;
-display:flex;
-flex-direction:column;
-align-items:center;
-text-align:center;
+    margin-top:220px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
 }
 
 h1{
-font-size:2.7rem;
-color:#ffffff;
-letter-spacing:4px;
+    font-size:2.7rem;
+    color:#ffffff;
+    letter-spacing:4px;
 }
 
 .badge{
-margin-top:15px;
-padding:6px 18px;
-border:1px solid #FFB733;
-border-radius:6px;
-font-size:1.2rem;
-background:rgba(255,183,51,0.1);
+    margin-top:15px;
+    padding:6px 18px;
+    border:1px solid #FFB733;
+    border-radius:6px;
+    font-size:1.2rem;
+    background:rgba(255,183,51,0.1);
 }
 
 .status-box{
-position:relative;
-margin:70px 0;
-display:flex;
-justify-content:center;
-align-items:center;
+    position:relative;
+    margin:70px 0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .status-img{
-width:190px;
-height:190px;
-z-index:2;
+    width:190px;
+    height:190px;
+    z-index:2;
 }
 
 .halo1,.halo2{
-position:absolute;
-border-radius:50%;
+    position:absolute;
+    border-radius:50%;
 }
 
 .halo1{
-width:240px;
-height:240px;
-border:2px solid rgba(255,255,255,0.4);
-animation:pulse 2.5s infinite ease-in-out;
+    width:240px;
+    height:240px;
+    border:2px solid rgba(255,255,255,0.4);
+    animation:pulse 2.5s infinite ease-in-out;
 }
 
 .halo2{
-width:290px;
-height:290px;
-border:1px solid rgba(255,255,255,0.15);
-animation:pulse 2.5s infinite ease-in-out .6s;
+    width:290px;
+    height:290px;
+    border:1px solid rgba(255,255,255,0.15);
+    animation:pulse 2.5s infinite ease-in-out .6s;
 }
 
 @keyframes pulse{
-0%{transform:scale(1);opacity:.8;}
-50%{transform:scale(1.1);opacity:.3;}
-100%{transform:scale(1);opacity:.8;}
+    0%{transform:scale(1);opacity:.8;}
+    50%{transform:scale(1.1);opacity:.3;}
+    100%{transform:scale(1);opacity:.8;}
 }
 
 .status-text{
-font-size:1.9rem;
-letter-spacing:6px;
-font-weight:bold;
+    font-size:1.9rem;
+    letter-spacing:6px;
+    font-weight:bold;
 }
 
 .info{
-margin-top:40px;
-border-top:1px solid rgba(255,255,255,0.08);
-padding-top:25px;
-line-height:30px;
-font-size:1rem;
+    margin-top:40px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding-top:25px;
+    line-height:30px;
+    font-size:1rem;
 }
 
 .info strong{color:#ffffff;}
 
 footer{
-margin-top:60px;
-text-align:center;
-font-size:10px;
-letter-spacing:3px;
-opacity:.4;
+    margin-top:60px;
+    text-align:center;
+    font-size:10px;
+    letter-spacing:3px;
+    opacity:.4;
 }
 
 #admin-section{
-margin-top:50px;
-padding:20px;
-border:1px dashed rgba(255,183,51,0.5);
-border-radius:6px;
-width:90%;
-max-width:700px;
-background:rgba(255,183,51,0.05);
-text-align:left;
+    margin-top:50px;
+    padding:20px;
+    border:1px dashed rgba(255,183,51,0.5);
+    border-radius:6px;
+    width:90%;
+    max-width:700px;
+    background:rgba(255,183,51,0.05);
+    text-align:left;
 }
 
 #admin-section button{
-padding:6px 12px;
-margin-bottom:15px;
-border:none;
-background:#FFB733;
-color:#1e1e1e;
-font-weight:bold;
-border-radius:4px;
-cursor:pointer;
+    padding:6px 12px;
+    margin-bottom:15px;
+    border:none;
+    background:#FFB733;
+    color:#1e1e1e;
+    font-weight:bold;
+    border-radius:4px;
+    cursor:pointer;
 }
 
 #reporte div{
-margin:4px 0;
+    margin:4px 0;
 }
 
 /* Dashboard */
 .dashboard-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:15px;
-margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;
+    margin-top:20px;
 }
 
 .card{
-padding:15px;
-background:rgba(0,0,0,0.4);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:6px;
+    padding:15px;
+    background:rgba(0,0,0,0.4);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:6px;
 }
 
 .card-title{
-font-size:12px;
-opacity:.6;
-margin-bottom:8px;
+    font-size:12px;
+    opacity:.6;
+    margin-bottom:8px;
 }
 
 .card-value{
-font-size:20px;
-font-weight:bold;
-color:#ffffff;
+    font-size:20px;
+    font-weight:bold;
+    color:#ffffff;
 }
 
 .bar-container{
-margin-top:20px;
+    margin-top:20px;
 }
 
 .bar{
-height:14px;
-background:#333;
-border-radius:20px;
-overflow:hidden;
+    height:14px;
+    background:#333;
+    border-radius:20px;
+    overflow:hidden;
 }
 
 .bar-fill{
-height:100%;
-width:0%;
-background:#FFB733;
-transition:width .6s ease;
+    height:100%;
+    width:0%;
+    background:#FFB733;
+    transition:width .6s ease;
 }
 </style>
 
@@ -241,151 +241,114 @@ transition:width .6s ease;
 <script defer>
 document.addEventListener("DOMContentLoaded", function(){
 
-// ===============================
-// CONTADOR GLOBAL DE ACCESOS
-// ===============================
-let accesos = localStorage.getItem("nexa_accesos");
-accesos = accesos ? parseInt(accesos)+1 : 1;
-localStorage.setItem("nexa_accesos", accesos);
+    const params = new URLSearchParams(window.location.search);
+    const codigo = params.get("codigo")?.trim();
+    const isAdmin = params.get("admin") === "true";
 
-// ===============================
-// PARAMETROS
-// ===============================
-const params = new URLSearchParams(window.location.search);
-const codigo = params.get("codigo")?.trim();
-const isAdmin = params.get("admin") === "true";
+    const badge = document.getElementById("codigo");
+    const estadoTexto = document.getElementById("estado");
+    const estadoSecundario = document.getElementById("estado-secundario");
+    const imagen = document.getElementById("imagen");
 
-const badge = document.getElementById("codigo");
-const estadoTexto = document.getElementById("estado");
-const estadoSecundario = document.getElementById("estado-secundario");
-const imagen = document.getElementById("imagen");
+    if(codigo){
+        badge.textContent = codigo;
 
-// ===============================
-// VALIDACIÓN PRINCIPAL
-// ===============================
-if(codigo){
-badge.textContent = codigo;
+        if(typeof alumnos !== "undefined" && alumnos[codigo]){
+            const estado = alumnos[codigo];
 
-if(typeof alumnos !== "undefined" && alumnos[codigo]){
-const estado = alumnos[codigo];
+            if(estado === "nopago"){
+                estadoTexto.textContent = "SIN PAGO";
+                estadoSecundario.textContent = "INACTIVO";
+                imagen.src = "img/cross.png";
+            } else if(estado === "base"){
+                estadoTexto.textContent = "PAGO REGISTRADO";
+                estadoSecundario.textContent = "BASE ACTIVA";
+                imagen.src = "img/check.png";
+            } else if(estado === "plus"){
+                estadoTexto.textContent = "PAGO REGISTRADO";
+                estadoSecundario.textContent = "PLUS ACTIVA";
+                imagen.src = "img/check-dorado.png";
+            }
 
-if(estado === "nopago"){
-estadoTexto.textContent = "SIN PAGO";
-estadoSecundario.textContent = "INACTIVO";
-imagen.src = "img/cross.png";
-} 
-else if(estado === "base"){
-estadoTexto.textContent = "PAGO REGISTRADO";
-estadoSecundario.textContent = "BASE ACTIVA";
-imagen.src = "img/check.png";
-} 
-else if(estado === "plus"){
-estadoTexto.textContent = "PAGO REGISTRADO";
-estadoSecundario.textContent = "PLUS ACTIVA";
-imagen.src = "img/check-dorado.png";
-}
-} 
-else {
-estadoTexto.textContent = "CÓDIGO INVÁLIDO";
-estadoSecundario.textContent = "ERROR";
-imagen.src = "img/cross.png";
+        } else {
+            estadoTexto.textContent = "CÓDIGO INVÁLIDO";
+            estadoSecundario.textContent = "ERROR";
+            imagen.src = "img/cross.png";
+        }
 
-// Registro de intento fallido
-let fallidos = localStorage.getItem("nexa_fallidos");
-fallidos = fallidos ? parseInt(fallidos)+1 : 1;
-localStorage.setItem("nexa_fallidos", fallidos);
-}
-} 
-else {
-badge.textContent = "SIN CÓDIGO";
-estadoTexto.textContent = "NO IDENTIFICADO";
-estadoSecundario.textContent = "ERROR";
-imagen.src = "img/cross.png";
-}
+    } else {
+        badge.textContent = "SIN CÓDIGO";
+        estadoTexto.textContent = "NO IDENTIFICADO";
+        estadoSecundario.textContent = "ERROR";
+        imagen.src = "img/cross.png";
+    }
 
-// ===============================
-// ADMIN
-// ===============================
-if(isAdmin){
+    if(isAdmin){
+        const adminDiv = document.getElementById("admin-section");
+        adminDiv.style.display = "block";
 
-const adminDiv = document.getElementById("admin-section");
-adminDiv.style.display = "block";
+        const btnTest = document.getElementById("test-codigos");
+        const reporteDiv = document.getElementById("reporte");
 
-const btnTest = document.getElementById("test-codigos");
-const reporteDiv = document.getElementById("reporte");
+        btnTest.addEventListener("click", function(){
+            reporteDiv.innerHTML = "";
+            const codigosPrueba = Object.keys(alumnos).concat(["NEXA-999-CFPM","NEXA-000-CFPM"]);
+            codigosPrueba.forEach(codigo=>{
+                let estado="";
+                let imgSrc="";
+                if(alumnos[codigo]){
+                    const val = alumnos[codigo];
+                    if(val==="plus"){ estado="PAGO REGISTRADO - PLUS ACTIVA"; imgSrc="check-dorado.png"; }
+                    else if(val==="base"){ estado="PAGO REGISTRADO - BASE ACTIVA"; imgSrc="check.png"; }
+                    else if(val==="nopago"){ estado="SIN PAGO - INACTIVO"; imgSrc="cross.png"; }
+                } else {
+                    estado="CÓDIGO INVÁLIDO - ERROR"; imgSrc="cross.png";
+                }
+                const linea = `<div>${codigo}: ${estado} <img src="img/${imgSrc}" style="width:24px; vertical-align:middle;"></div>`;
+                reporteDiv.innerHTML += linea;
+            });
+        });
 
-btnTest.addEventListener("click", function(){
-reporteDiv.innerHTML = "";
-const codigosPrueba = Object.keys(alumnos).concat(["NEXA-999-CFPM","NEXA-000-CFPM"]);
+        // Dashboard
+        let totalBase=0,totalPlus=0,totalNoPago=0;
+        const totalAlumnos = Object.keys(alumnos).length;
 
-codigosPrueba.forEach(codigo=>{
-let estado="";
-let imgSrc="";
+        for(const key in alumnos){
+            if(alumnos[key]==="base") totalBase++;
+            if(alumnos[key]==="plus") totalPlus++;
+            if(alumnos[key]==="nopago") totalNoPago++;
+        }
 
-if(alumnos[codigo]){
-const val = alumnos[codigo];
-if(val==="plus"){ estado="PAGO REGISTRADO - PLUS ACTIVA"; imgSrc="check-dorado.png"; }
-else if(val==="base"){ estado="PAGO REGISTRADO - BASE ACTIVA"; imgSrc="check.png"; }
-else if(val==="nopago"){ estado="SIN PAGO - INACTIVO"; imgSrc="cross.png"; }
-}
-else{
-estado="CÓDIGO INVÁLIDO - ERROR";
-imgSrc="cross.png";
-}
+        document.getElementById("baseCount").textContent=totalBase;
+        document.getElementById("plusCount").textContent=totalPlus;
+        document.getElementById("noPagoCount").textContent=totalNoPago;
+        document.getElementById("totalCount").textContent=totalAlumnos;
 
-const linea = `<div>${codigo}: ${estado} <img src="img/${imgSrc}" style="width:24px; vertical-align:middle;"></div>`;
-reporteDiv.innerHTML += linea;
-});
-});
+        const ingreso=(totalBase*1000)+(totalPlus*2000);
+        document.getElementById("ingresoTotal").textContent="$"+ingreso;
 
-// Dashboard original intacto
-let totalBase=0,totalPlus=0,totalNoPago=0;
-const totalAlumnos = Object.keys(alumnos).length;
-
-for(const key in alumnos){
-if(alumnos[key]==="base") totalBase++;
-if(alumnos[key]==="plus") totalPlus++;
-if(alumnos[key]==="nopago") totalNoPago++;
-}
-
-document.getElementById("baseCount").textContent=totalBase;
-document.getElementById("plusCount").textContent=totalPlus;
-document.getElementById("noPagoCount").textContent=totalNoPago;
-document.getElementById("totalCount").textContent=totalAlumnos;
-
-const ingreso=(totalBase*1000)+(totalPlus*2000);
-document.getElementById("ingresoTotal").textContent="$"+ingreso;
-
-const porcentaje=((totalBase+totalPlus)/totalAlumnos)*100;
-document.getElementById("barraProgreso").style.width=porcentaje+"%";
-
-// NUEVAS MÉTRICAS VISIBLES
-const accesosTotales = localStorage.getItem("nexa_accesos") || 0;
-const intentosFallidos = localStorage.getItem("nexa_fallidos") || 0;
-
-reporteDiv.innerHTML += `<hr><div><strong>ACCESOS TOTALES:</strong> ${accesosTotales}</div>`;
-reporteDiv.innerHTML += `<div><strong>INTENTOS FALLIDOS:</strong> ${intentosFallidos}</div>`;
-}
+        const porcentaje=((totalBase+totalPlus)/totalAlumnos)*100;
+        document.getElementById("barraProgreso").style.width=porcentaje+"%";
+    }
 
 });
 </script>
-
 </head>
 
 <body>
 
 <div class="header">
-<div class="left">
-<div class="colab">
-CON<br>COLABORACIÓN<br>DE
-</div>
-<div class="colab-line"></div>
-</div>
+    <div class="left">
+        <div class="colab">
+            CON<br>COLABORACIÓN<br>DE
+        </div>
+        <div class="colab-line"></div>
+    </div>
 
-<div class="right">
-<img src="img/nexa-logo.png" alt="NEXA">
-<div class="logo-line"></div>
-</div>
+    <div class="right">
+        <img src="img/nexa-logo.png" alt="NEXA">
+        <div class="logo-line"></div>
+    </div>
 </div>
 
 <main>
@@ -395,61 +358,61 @@ CON<br>COLABORACIÓN<br>DE
 <div class="badge" id="codigo">CARGANDO...</div>
 
 <div class="status-box">
-<div class="halo1"></div>
-<div class="halo2"></div>
-<img src="img/check.png" id="imagen" class="status-img" alt="Estado">
+    <div class="halo1"></div>
+    <div class="halo2"></div>
+    <img src="img/check.png" id="imagen" class="status-img" alt="Estado">
 </div>
 
 <div class="status-text" id="estado">CARGANDO...</div>
 
 <div class="info">
-PERÍODO: <strong>MARZO 2026</strong><br>
-SISTEMA: <strong>NEXA V1.0</strong><br>
-ESTADO: <strong id="estado-secundario">---</strong>
+    PERÍODO: <strong>MARZO 2026</strong><br>
+    SISTEMA: <strong>NEXA V1.0</strong><br>
+    ESTADO: <strong id="estado-secundario">---</strong>
 </div>
 
 <div id="admin-section" style="display:none;">
 
-<button id="test-codigos">Testear Todos los Códigos (Privado)</button>
-<div id="reporte"></div>
+    <button id="test-codigos">Testear Todos los Códigos (Privado)</button>
+    <div id="reporte"></div>
 
-<hr style="margin:25px 0; border:1px solid rgba(255,183,51,0.2);">
+    <hr style="margin:25px 0; border:1px solid rgba(255,183,51,0.2);">
 
-<div style="font-size:18px;font-weight:bold;margin-bottom:10px;">
-DASHBOARD ADMINISTRATIVO
-</div>
+    <div style="font-size:18px;font-weight:bold;margin-bottom:10px;">
+        DASHBOARD ADMINISTRATIVO
+    </div>
 
-<div class="dashboard-grid">
-<div class="card">
-<div class="card-title">TOTAL ALUMNOS</div>
-<div class="card-value" id="totalCount">0</div>
-</div>
-<div class="card">
-<div class="card-title">PLAN BASE</div>
-<div class="card-value" id="baseCount">0</div>
-</div>
-<div class="card">
-<div class="card-title">PLAN PLUS</div>
-<div class="card-value" id="plusCount">0</div>
-</div>
-<div class="card">
-<div class="card-title">SIN PAGO</div>
-<div class="card-value" id="noPagoCount">0</div>
-</div>
-<div class="card">
-<div class="card-title">INGRESO ESTIMADO</div>
-<div class="card-value" id="ingresoTotal">$0</div>
-</div>
-</div>
+    <div class="dashboard-grid">
+        <div class="card">
+            <div class="card-title">TOTAL ALUMNOS</div>
+            <div class="card-value" id="totalCount">0</div>
+        </div>
+        <div class="card">
+            <div class="card-title">PLAN BASE</div>
+            <div class="card-value" id="baseCount">0</div>
+        </div>
+        <div class="card">
+            <div class="card-title">PLAN PLUS</div>
+            <div class="card-value" id="plusCount">0</div>
+        </div>
+        <div class="card">
+            <div class="card-title">SIN PAGO</div>
+            <div class="card-value" id="noPagoCount">0</div>
+        </div>
+        <div class="card">
+            <div class="card-title">INGRESO ESTIMADO</div>
+            <div class="card-value" id="ingresoTotal">$0</div>
+        </div>
+    </div>
 
-<div class="bar-container">
-<div style="margin-bottom:6px;font-size:12px;opacity:.6;">
-PORCENTAJE DE PAGO
-</div>
-<div class="bar">
-<div class="bar-fill" id="barraProgreso"></div>
-</div>
-</div>
+    <div class="bar-container">
+        <div style="margin-bottom:6px;font-size:12px;opacity:.6;">
+            PORCENTAJE DE PAGO
+        </div>
+        <div class="bar">
+            <div class="bar-fill" id="barraProgreso"></div>
+        </div>
+    </div>
 
 </div>
 
