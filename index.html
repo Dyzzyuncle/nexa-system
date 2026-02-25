@@ -164,13 +164,30 @@ footer{
     opacity:.4;
 }
 
-/* RESUMEN PERSONAL */
-#resumen{
-    margin-top:35px;
-    padding-top:25px;
-    border-top:1px solid rgba(255,255,255,0.08);
-    line-height:28px;
-    display:none;
+#admin-section{
+    margin-top:50px;
+    padding:15px;
+    border:1px dashed rgba(255,183,51,0.5);
+    border-radius:6px;
+    width:90%;
+    max-width:400px;
+    background:rgba(255,183,51,0.05);
+    text-align:left;
+}
+
+#admin-section button{
+    padding:6px 12px;
+    margin-bottom:10px;
+    border:none;
+    background:#FFB733;
+    color:#1e1e1e;
+    font-weight:bold;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+#reporte div{
+    margin:4px 0;
 }
 </style>
 
@@ -179,62 +196,75 @@ footer{
 <script defer>
 document.addEventListener("DOMContentLoaded", function(){
 
-const params = new URLSearchParams(window.location.search);
-const codigo = params.get("codigo")?.trim();
-const esAdmin = params.get("admin") === "true";
+    const params = new URLSearchParams(window.location.search);
+    const codigo = params.get("codigo")?.trim();
+    const isAdmin = params.get("admin") === "true";
 
-const badge = document.getElementById("codigo");
-const estadoTexto = document.getElementById("estado");
-const estadoSecundario = document.getElementById("estado-secundario");
-const imagen = document.getElementById("imagen");
-const resumenDiv = document.getElementById("resumen");
+    const badge = document.getElementById("codigo");
+    const estadoTexto = document.getElementById("estado");
+    const estadoSecundario = document.getElementById("estado-secundario");
+    const imagen = document.getElementById("imagen");
 
-if(codigo){
-    badge.textContent = codigo;
+    if(codigo){
+        badge.textContent = codigo;
 
-    if(typeof alumnos !== "undefined" && alumnos[codigo]){
+        if(typeof alumnos !== "undefined" && alumnos[codigo]){
+            const estado = alumnos[codigo];
 
-        const estado = alumnos[codigo];
+            if(estado === "nopago"){
+                estadoTexto.textContent = "SIN PAGO";
+                estadoSecundario.textContent = "INACTIVO";
+                imagen.src = "img/cross.png";
+            } else if(estado === "base"){
+                estadoTexto.textContent = "PAGO REGISTRADO";
+                estadoSecundario.textContent = "BASE ACTIVA";
+                imagen.src = "img/check.png";
+            } else if(estado === "plus"){
+                estadoTexto.textContent = "PAGO REGISTRADO";
+                estadoSecundario.textContent = "PLUS ACTIVA";
+                imagen.src = "img/check-dorado.png";
+            }
 
-        if(estado === "nopago"){
-            estadoTexto.textContent = "SIN PAGO";
-            estadoSecundario.textContent = "INACTIVO";
+        } else {
+            estadoTexto.textContent = "CÓDIGO INVÁLIDO";
+            estadoSecundario.textContent = "ERROR";
             imagen.src = "img/cross.png";
         }
 
-        else if(estado === "base"){
-            estadoTexto.textContent = "PAGO REGISTRADO";
-            estadoSecundario.textContent = "BASE ACTIVA";
-            imagen.src = "img/check.png";
-        }
-
-        else if(estado === "plus"){
-            estadoTexto.textContent = "PAGO REGISTRADO";
-            estadoSecundario.textContent = "PLUS ACTIVA";
-            imagen.src = "img/check-dorado.png";
-        }
-
-        /* ===== RESUMEN PERSONAL ===== */
-        resumenDiv.style.display = "block";
-
-        resumenDiv.innerHTML = `
-            PLAN ACTUAL: <strong>${estado.toUpperCase()}</strong><br>
-            CLASES RESTANTES: <strong>8</strong><br>
-            PRÓXIMO VENCIMIENTO: <strong>30 MARZO 2026</strong>
-        `;
-
-    }else{
-        estadoTexto.textContent = "CÓDIGO INVÁLIDO";
+    } else {
+        badge.textContent = "SIN CÓDIGO";
+        estadoTexto.textContent = "NO IDENTIFICADO";
         estadoSecundario.textContent = "ERROR";
         imagen.src = "img/cross.png";
     }
 
-}else{
-    badge.textContent = "SIN CÓDIGO";
-    estadoTexto.textContent = "NO IDENTIFICADO";
-    estadoSecundario.textContent = "ERROR";
-    imagen.src = "img/cross.png";
-}
+    // Sección admin solo visible con &admin=true
+    if(isAdmin){
+        const adminDiv = document.getElementById("admin-section");
+        adminDiv.style.display = "block";
+
+        const btnTest = document.getElementById("test-codigos");
+        const reporteDiv = document.getElementById("reporte");
+
+        btnTest.addEventListener("click", function(){
+            reporteDiv.innerHTML = "";
+            const codigosPrueba = Object.keys(alumnos).concat(["NEXA-999-CFPM", "NEXA-000-CFPM"]);
+            codigosPrueba.forEach(codigo=>{
+                let estado="";
+                let imgSrc="";
+                if(alumnos[codigo]){
+                    const val = alumnos[codigo];
+                    if(val==="plus"){ estado="PAGO REGISTRADO - PLUS ACTIVA"; imgSrc="check-dorado.png"; }
+                    else if(val==="base"){ estado="PAGO REGISTRADO - BASE ACTIVA"; imgSrc="check.png"; }
+                    else if(val==="nopago"){ estado="SIN PAGO - INACTIVO"; imgSrc="cross.png"; }
+                } else {
+                    estado="CÓDIGO INVÁLIDO - ERROR"; imgSrc="cross.png";
+                }
+                const linea = `<div>${codigo}: ${estado} <img src="img/${imgSrc}" style="width:24px; vertical-align:middle;"></div>`;
+                reporteDiv.innerHTML += linea;
+            });
+        });
+    }
 
 });
 </script>
@@ -277,8 +307,11 @@ if(codigo){
     ESTADO: <strong id="estado-secundario">---</strong>
 </div>
 
-<!-- RESUMEN PERSONAL -->
-<div id="resumen"></div>
+<!-- Admin solo visible si admin=true -->
+<div id="admin-section" style="display:none;">
+    <button id="test-codigos">Testear Todos los Códigos (Privado)</button>
+    <div id="reporte"></div>
+</div>
 
 </main>
 
