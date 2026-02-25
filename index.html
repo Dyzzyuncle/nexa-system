@@ -163,21 +163,31 @@ footer{
     letter-spacing:3px;
     opacity:.4;
 }
-button{
-    padding:10px 20px;
-    font-size:1rem;
+
+#admin-section{
+    margin-top:50px;
+    padding:15px;
+    border:1px dashed rgba(255,183,51,0.5);
     border-radius:6px;
+    width:90%;
+    max-width:400px;
+    background:rgba(255,183,51,0.05);
+    text-align:left;
+}
+
+#admin-section button{
+    padding:6px 12px;
+    margin-bottom:10px;
     border:none;
     background:#FFB733;
     color:#1e1e1e;
+    font-weight:bold;
+    border-radius:4px;
     cursor:pointer;
-    margin-top:20px;
 }
-#reporte{
-    margin-top:20px;
-    font-family:'Anonymous Pro', monospace;
-    text-align:center;
-    color:#ffffff;
+
+#reporte div{
+    margin:4px 0;
 }
 </style>
 
@@ -188,6 +198,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const params = new URLSearchParams(window.location.search);
     const codigo = params.get("codigo")?.trim();
+    const isAdmin = params.get("admin") === "true";
 
     const badge = document.getElementById("codigo");
     const estadoTexto = document.getElementById("estado");
@@ -198,60 +209,62 @@ document.addEventListener("DOMContentLoaded", function(){
         badge.textContent = codigo;
 
         if(typeof alumnos !== "undefined" && alumnos[codigo]){
-
             const estado = alumnos[codigo];
 
             if(estado === "nopago"){
                 estadoTexto.textContent = "SIN PAGO";
                 estadoSecundario.textContent = "INACTIVO";
                 imagen.src = "img/cross.png";
-            }
-            else if(estado === "base"){
+            } else if(estado === "base"){
                 estadoTexto.textContent = "PAGO REGISTRADO";
                 estadoSecundario.textContent = "BASE ACTIVA";
                 imagen.src = "img/check.png";
-            }
-            else if(estado === "plus"){
+            } else if(estado === "plus"){
                 estadoTexto.textContent = "PAGO REGISTRADO";
                 estadoSecundario.textContent = "PLUS ACTIVA";
                 imagen.src = "img/check-dorado.png";
             }
 
-        }else{
+        } else {
             estadoTexto.textContent = "CÓDIGO INVÁLIDO";
             estadoSecundario.textContent = "ERROR";
             imagen.src = "img/cross.png";
         }
 
-    }else{
+    } else {
         badge.textContent = "SIN CÓDIGO";
         estadoTexto.textContent = "NO IDENTIFICADO";
         estadoSecundario.textContent = "ERROR";
         imagen.src = "img/cross.png";
     }
 
-    // === BOTÓN DE PRUEBA DE TODOS LOS CÓDIGOS ===
-    const btnTest = document.getElementById("test-codigos");
-    const reporteDiv = document.getElementById("reporte");
+    // Sección admin solo visible con &admin=true
+    if(isAdmin){
+        const adminDiv = document.getElementById("admin-section");
+        adminDiv.style.display = "block";
 
-    btnTest.addEventListener("click", function(){
-        reporteDiv.innerHTML = "";
-        const codigosPrueba = Object.keys(alumnos).concat(["NEXA-999-CFPM", "NEXA-000-CFPM"]);
-        codigosPrueba.forEach(codigo=>{
-            let estado="";
-            let imgSrc="";
-            if(alumnos[codigo]){
-                const val = alumnos[codigo];
-                if(val==="plus"){ estado="PAGO REGISTRADO - PLUS ACTIVA"; imgSrc="check-dorado.png"; }
-                else if(val==="base"){ estado="PAGO REGISTRADO - BASE ACTIVA"; imgSrc="check.png"; }
-                else if(val==="nopago"){ estado="SIN PAGO - INACTIVO"; imgSrc="cross.png"; }
-            } else {
-                estado="CÓDIGO INVÁLIDO - ERROR"; imgSrc="cross.png";
-            }
-            const linea = `<div style="margin:5px 0;">${codigo}: ${estado} <img src="img/${imgSrc}" style="width:24px; vertical-align:middle;"></div>`;
-            reporteDiv.innerHTML += linea;
+        const btnTest = document.getElementById("test-codigos");
+        const reporteDiv = document.getElementById("reporte");
+
+        btnTest.addEventListener("click", function(){
+            reporteDiv.innerHTML = "";
+            const codigosPrueba = Object.keys(alumnos).concat(["NEXA-999-CFPM", "NEXA-000-CFPM"]);
+            codigosPrueba.forEach(codigo=>{
+                let estado="";
+                let imgSrc="";
+                if(alumnos[codigo]){
+                    const val = alumnos[codigo];
+                    if(val==="plus"){ estado="PAGO REGISTRADO - PLUS ACTIVA"; imgSrc="check-dorado.png"; }
+                    else if(val==="base"){ estado="PAGO REGISTRADO - BASE ACTIVA"; imgSrc="check.png"; }
+                    else if(val==="nopago"){ estado="SIN PAGO - INACTIVO"; imgSrc="cross.png"; }
+                } else {
+                    estado="CÓDIGO INVÁLIDO - ERROR"; imgSrc="cross.png";
+                }
+                const linea = `<div>${codigo}: ${estado} <img src="img/${imgSrc}" style="width:24px; vertical-align:middle;"></div>`;
+                reporteDiv.innerHTML += linea;
+            });
         });
-    });
+    }
 
 });
 </script>
@@ -294,9 +307,11 @@ document.addEventListener("DOMContentLoaded", function(){
     ESTADO: <strong id="estado-secundario">---</strong>
 </div>
 
-<!-- BOTÓN PARA TESTEAR TODOS LOS CÓDIGOS -->
-<button id="test-codigos">Testear Todos los Códigos</button>
-<div id="reporte"></div>
+<!-- Admin solo visible si admin=true -->
+<div id="admin-section" style="display:none;">
+    <button id="test-codigos">Testear Todos los Códigos (Privado)</button>
+    <div id="reporte"></div>
+</div>
 
 </main>
 
