@@ -163,60 +163,95 @@ footer{
     letter-spacing:3px;
     opacity:.4;
 }
+button{
+    padding:10px 20px;
+    font-size:1rem;
+    border-radius:6px;
+    border:none;
+    background:#FFB733;
+    color:#1e1e1e;
+    cursor:pointer;
+    margin-top:20px;
+}
+#reporte{
+    margin-top:20px;
+    font-family:'Anonymous Pro', monospace;
+    text-align:center;
+    color:#ffffff;
+}
 </style>
 
-<!-- CARGAMOS DATOS -->
 <script src="datos.js" defer></script>
 
-<!-- SCRIPT PRINCIPAL -->
 <script defer>
 document.addEventListener("DOMContentLoaded", function(){
 
-const params = new URLSearchParams(window.location.search);
-const codigo = params.get("codigo")?.trim();
+    const params = new URLSearchParams(window.location.search);
+    const codigo = params.get("codigo")?.trim();
 
-const badge = document.getElementById("codigo");
-const estadoTexto = document.getElementById("estado");
-const estadoSecundario = document.getElementById("estado-secundario");
-const imagen = document.getElementById("imagen");
+    const badge = document.getElementById("codigo");
+    const estadoTexto = document.getElementById("estado");
+    const estadoSecundario = document.getElementById("estado-secundario");
+    const imagen = document.getElementById("imagen");
 
-if(codigo){
-    badge.textContent = codigo;
+    if(codigo){
+        badge.textContent = codigo;
 
-    if(typeof alumnos !== "undefined" && alumnos[codigo]){
+        if(typeof alumnos !== "undefined" && alumnos[codigo]){
 
-        const estado = alumnos[codigo];
+            const estado = alumnos[codigo];
 
-        if(estado === "nopago"){
-            estadoTexto.textContent = "SIN PAGO";
-            estadoSecundario.textContent = "INACTIVO";
+            if(estado === "nopago"){
+                estadoTexto.textContent = "SIN PAGO";
+                estadoSecundario.textContent = "INACTIVO";
+                imagen.src = "img/cross.png";
+            }
+            else if(estado === "base"){
+                estadoTexto.textContent = "PAGO REGISTRADO";
+                estadoSecundario.textContent = "BASE ACTIVA";
+                imagen.src = "img/check.png";
+            }
+            else if(estado === "plus"){
+                estadoTexto.textContent = "PAGO REGISTRADO";
+                estadoSecundario.textContent = "PLUS ACTIVA";
+                imagen.src = "img/check-dorado.png";
+            }
+
+        }else{
+            estadoTexto.textContent = "CÓDIGO INVÁLIDO";
+            estadoSecundario.textContent = "ERROR";
             imagen.src = "img/cross.png";
         }
 
-        else if(estado === "base"){
-            estadoTexto.textContent = "PAGO REGISTRADO";
-            estadoSecundario.textContent = "BASE ACTIVA";
-            imagen.src = "img/check.png";
-        }
-
-        else if(estado === "plus"){
-            estadoTexto.textContent = "PAGO REGISTRADO";
-            estadoSecundario.textContent = "PLUS ACTIVA";
-            imagen.src = "img/check-dorado.png";
-        }
-
     }else{
-        estadoTexto.textContent = "CÓDIGO INVÁLIDO";
+        badge.textContent = "SIN CÓDIGO";
+        estadoTexto.textContent = "NO IDENTIFICADO";
         estadoSecundario.textContent = "ERROR";
         imagen.src = "img/cross.png";
     }
 
-}else{
-    badge.textContent = "SIN CÓDIGO";
-    estadoTexto.textContent = "NO IDENTIFICADO";
-    estadoSecundario.textContent = "ERROR";
-    imagen.src = "img/cross.png";
-}
+    // === BOTÓN DE PRUEBA DE TODOS LOS CÓDIGOS ===
+    const btnTest = document.getElementById("test-codigos");
+    const reporteDiv = document.getElementById("reporte");
+
+    btnTest.addEventListener("click", function(){
+        reporteDiv.innerHTML = "";
+        const codigosPrueba = Object.keys(alumnos).concat(["NEXA-999-CFPM", "NEXA-000-CFPM"]);
+        codigosPrueba.forEach(codigo=>{
+            let estado="";
+            let imgSrc="";
+            if(alumnos[codigo]){
+                const val = alumnos[codigo];
+                if(val==="plus"){ estado="PAGO REGISTRADO - PLUS ACTIVA"; imgSrc="check-dorado.png"; }
+                else if(val==="base"){ estado="PAGO REGISTRADO - BASE ACTIVA"; imgSrc="check.png"; }
+                else if(val==="nopago"){ estado="SIN PAGO - INACTIVO"; imgSrc="cross.png"; }
+            } else {
+                estado="CÓDIGO INVÁLIDO - ERROR"; imgSrc="cross.png";
+            }
+            const linea = `<div style="margin:5px 0;">${codigo}: ${estado} <img src="img/${imgSrc}" style="width:24px; vertical-align:middle;"></div>`;
+            reporteDiv.innerHTML += linea;
+        });
+    });
 
 });
 </script>
@@ -258,6 +293,10 @@ if(codigo){
     SISTEMA: <strong>NEXA V1.0</strong><br>
     ESTADO: <strong id="estado-secundario">---</strong>
 </div>
+
+<!-- BOTÓN PARA TESTEAR TODOS LOS CÓDIGOS -->
+<button id="test-codigos">Testear Todos los Códigos</button>
+<div id="reporte"></div>
 
 </main>
 
