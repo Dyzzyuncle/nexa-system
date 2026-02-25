@@ -186,6 +186,11 @@ footer{
     cursor:pointer;
 }
 
+#reporte div{
+    margin:4px 0;
+}
+
+/* Dashboard */
 .dashboard-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -282,6 +287,29 @@ document.addEventListener("DOMContentLoaded", function(){
         const adminDiv = document.getElementById("admin-section");
         adminDiv.style.display = "block";
 
+        const btnTest = document.getElementById("test-codigos");
+        const reporteDiv = document.getElementById("reporte");
+
+        btnTest.addEventListener("click", function(){
+            reporteDiv.innerHTML = "";
+            const codigosPrueba = Object.keys(alumnos).concat(["NEXA-999-CFPM","NEXA-000-CFPM"]);
+            codigosPrueba.forEach(codigo=>{
+                let estado="";
+                let imgSrc="";
+                if(alumnos[codigo]){
+                    const val = alumnos[codigo];
+                    if(val==="plus"){ estado="PAGO REGISTRADO - PLUS ACTIVA"; imgSrc="check-dorado.png"; }
+                    else if(val==="base"){ estado="PAGO REGISTRADO - BASE ACTIVA"; imgSrc="check.png"; }
+                    else if(val==="nopago"){ estado="SIN PAGO - INACTIVO"; imgSrc="cross.png"; }
+                } else {
+                    estado="CÓDIGO INVÁLIDO - ERROR"; imgSrc="cross.png";
+                }
+                const linea = `<div>${codigo}: ${estado} <img src="img/${imgSrc}" style="width:24px; vertical-align:middle;"></div>`;
+                reporteDiv.innerHTML += linea;
+            });
+        });
+
+        // Dashboard
         let totalBase=0,totalPlus=0,totalNoPago=0;
         const totalAlumnos = Object.keys(alumnos).length;
 
@@ -305,7 +333,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 </script>
-
 </head>
 
 <body>
@@ -345,6 +372,11 @@ document.addEventListener("DOMContentLoaded", function(){
 </div>
 
 <div id="admin-section" style="display:none;">
+
+    <button id="test-codigos">Testear Todos los Códigos (Privado)</button>
+    <div id="reporte"></div>
+
+    <hr style="margin:25px 0; border:1px solid rgba(255,183,51,0.2);">
 
     <div style="font-size:18px;font-weight:bold;margin-bottom:10px;">
         DASHBOARD ADMINISTRATIVO
