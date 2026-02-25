@@ -164,6 +164,63 @@ footer{
     opacity:.4;
 }
 </style>
+
+<!-- CARGAMOS DATOS CON DEFER -->
+<script src="datos.js" defer></script>
+
+<!-- SCRIPT PRINCIPAL CORREGIDO -->
+<script defer>
+document.addEventListener("DOMContentLoaded", function(){
+
+const params = new URLSearchParams(window.location.search);
+const codigo = params.get("codigo")?.trim();
+
+const badge = document.getElementById("codigo");
+const estadoTexto = document.getElementById("estado");
+const estadoSecundario = document.getElementById("estado-secundario");
+const imagen = document.getElementById("imagen");
+
+if(codigo){
+    badge.textContent = codigo;
+
+    if(typeof alumnos !== "undefined" && alumnos[codigo]){
+
+        const estado = alumnos[codigo];
+
+        if(estado === "nopago"){
+            estadoTexto.textContent = "SIN PAGO";
+            estadoSecundario.textContent = "INACTIVO";
+            imagen.src = "img/cross.png";
+        }
+
+        else if(estado === "base"){
+            estadoTexto.textContent = "PAGO REGISTRADO";
+            estadoSecundario.textContent = "BASE ACTIVA";
+            imagen.src = "img/check.png";
+        }
+
+        else if(estado === "plus"){
+            estadoTexto.textContent = "PAGO REGISTRADO";
+            estadoSecundario.textContent = "PLUS ACTIVA";
+            imagen.src = "img/check-dorado.png";
+        }
+
+    }else{
+        estadoTexto.textContent = "CÓDIGO INVÁLIDO";
+        estadoSecundario.textContent = "ERROR";
+        imagen.src = "img/cross.png";
+    }
+
+}else{
+    badge.textContent = "SIN CÓDIGO";
+    estadoTexto.textContent = "NO IDENTIFICADO";
+    estadoSecundario.textContent = "ERROR";
+    imagen.src = "img/cross.png";
+}
+
+});
+</script>
+
 </head>
 
 <body>
@@ -207,56 +264,6 @@ footer{
 <footer>
 NEXA INFRASTRUCTURE © 2025 – VERIFIED STUDENT SYSTEM
 </footer>
-
-<script src="datos.js"></script>
-
-<script>
-const params = new URLSearchParams(window.location.search);
-const codigo = params.get("codigo")?.trim();
-
-const badge = document.getElementById("codigo");
-const estadoTexto = document.getElementById("estado");
-const estadoSecundario = document.getElementById("estado-secundario");
-const imagen = document.getElementById("imagen");
-
-if(codigo){
-    badge.textContent = codigo;
-
-    if(alumnos[codigo]){
-
-        const estado = alumnos[codigo];
-
-        if(estado === "nopago"){
-            estadoTexto.textContent = "SIN PAGO";
-            estadoSecundario.textContent = "INACTIVO";
-            imagen.src = "img/cross.png";
-        }
-
-        if(estado === "base"){
-            estadoTexto.textContent = "PAGO REGISTRADO";
-            estadoSecundario.textContent = "BASE ACTIVA";
-            imagen.src = "img/check.png";
-        }
-
-        if(estado === "plus"){
-            estadoTexto.textContent = "PAGO REGISTRADO";
-            estadoSecundario.textContent = "PLUS ACTIVA";
-            imagen.src = "img/check-dorado.png";
-        }
-
-    }else{
-        estadoTexto.textContent = "CÓDIGO INVÁLIDO";
-        estadoSecundario.textContent = "ERROR";
-        imagen.src = "img/cross.png";
-    }
-
-}else{
-    badge.textContent = "SIN CÓDIGO";
-    estadoTexto.textContent = "NO IDENTIFICADO";
-    estadoSecundario.textContent = "ERROR";
-    imagen.src = "img/cross.png";
-}
-</script>
 
 </body>
 </html>
