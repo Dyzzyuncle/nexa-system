@@ -3,348 +3,314 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEXA - Estado de Membresía</title>
+<title>Registro de Pago – NEXA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* ===============================
-   RESET GENERAL
-=================================*/
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, Helvetica, sans-serif;
-}
-
-/* ===============================
-   BODY
-=================================*/
+*{box-sizing:border-box;margin:0;padding:0;}
 
 body{
-  background:#0f172a;
-  color:white;
-  display:flex;
-  flex-direction:column;
-  min-height:100vh;
+    font-family:'Anonymous Pro', monospace;
+    background:#1e1e1e;
+    color:#FFB733;
+    min-height:100vh;
+    padding:20px;
+    position:relative;
+    border:4px solid rgba(255,217,102,0.08);
 }
 
-/* ===============================
-   HEADER
-=================================*/
-
-header{
-  background:#111827;
-  padding:15px;
-  border-bottom:2px solid #1f2937;
+body::before{
+    content:"";
+    position:absolute;
+    top:12px;
+    left:10%;
+    width:80%;
+    height:1px;
+    background:linear-gradient(to right,transparent,#FFB733,transparent);
 }
 
-.header-container{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+.header{
+    position:absolute;
+    top:25px;
+    left:0;
+    width:100%;
+    padding:0 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
 }
 
-.logo{
-  font-weight:bold;
-  font-size:18px;
-}
+.left{display:flex;flex-direction:column;}
 
 .colab{
-  font-size:14px;
-  opacity:0.7;
+    font-size:14px;
+    letter-spacing:4px;
+    line-height:22px;
+    color:#d4a843;
 }
 
-/* ===============================
-   MAIN
-=================================*/
+.colab-line{
+    margin-top:8px;
+    width:140px;
+    height:2px;
+    background:#d4a843;
+}
+
+.right{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    min-width:190px;
+}
+
+.right img{
+    width:190px;
+    display:block;
+    margin-bottom:-18px;
+    transform:translateY(8px);
+}
+
+.logo-line{
+    margin-top:8px;
+    width:90px;
+    height:2px;
+    background:#ffffff;
+}
 
 main{
-  flex:1;
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
+    margin-top:220px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
 }
 
-/* ===============================
-   BADGE CÓDIGO
-=================================*/
+h1{
+    font-size:2.7rem;
+    color:#ffffff;
+    letter-spacing:4px;
+}
 
 .badge{
-  background:#1f2937;
-  padding:10px 20px;
-  border-radius:20px;
-  margin-bottom:25px;
-  font-size:14px;
+    margin-top:15px;
+    padding:6px 18px;
+    border:1px solid #FFB733;
+    border-radius:6px;
+    font-size:1.2rem;
+    background:rgba(255,183,51,0.1);
 }
-
-/* ===============================
-   STATUS BOX
-=================================*/
 
 .status-box{
-  position:relative;
-  margin-bottom:20px;
+    position:relative;
+    margin:70px 0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.status-box img{
-  width:120px;
-  height:120px;
+.status-img{
+    width:190px;
+    height:190px;
+    z-index:2;
 }
 
-/* ===============================
-   TEXTO ESTADO
-=================================*/
+.halo1,.halo2{
+    position:absolute;
+    border-radius:50%;
+}
+
+.halo1{
+    width:240px;
+    height:240px;
+    border:2px solid rgba(255,255,255,0.4);
+    animation:pulse 2.5s infinite ease-in-out;
+}
+
+.halo2{
+    width:290px;
+    height:290px;
+    border:1px solid rgba(255,255,255,0.15);
+    animation:pulse 2.5s infinite ease-in-out .6s;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);opacity:.8;}
+    50%{transform:scale(1.1);opacity:.3;}
+    100%{transform:scale(1);opacity:.8;}
+}
 
 .status-text{
-  font-size:22px;
-  font-weight:bold;
-  margin-top:15px;
+    font-size:1.9rem;
+    letter-spacing:6px;
+    font-weight:bold;
 }
-
-.secondary-text{
-  margin-top:10px;
-  font-size:16px;
-  opacity:0.8;
-}
-
-/* ===============================
-   INFO EXTRA
-=================================*/
 
 .info{
-  margin-top:15px;
-  font-size:14px;
-  opacity:0.8;
+    margin-top:40px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding-top:25px;
+    line-height:30px;
+    font-size:1rem;
 }
 
-/* ===============================
-   ADMIN PANEL
-=================================*/
-
-#adminPanel{
-  margin-top:40px;
-  padding:20px;
-  border:1px solid #1f2937;
-  border-radius:10px;
-  width:100%;
-  max-width:400px;
-  background:#111827;
-}
-
-/* ===============================
-   FOOTER
-=================================*/
+.info strong{color:#ffffff;}
 
 footer{
-  padding:15px;
-  text-align:center;
-  font-size:12px;
-  opacity:0.6;
-  border-top:1px solid #1f2937;
+    margin-top:60px;
+    text-align:center;
+    font-size:10px;
+    letter-spacing:3px;
+    opacity:.4;
 }
-
-/* ===============================
-   RESPONSIVE
-=================================*/
-
-@media(max-width:480px){
-
-  .status-box img{
-    width:100px;
-    height:100px;
-  }
-
-  .status-text{
-    font-size:20px;
-  }
-
-}
-
 </style>
+
+<script src="datos.js" defer></script>
+
+<script defer>
+document.addEventListener("DOMContentLoaded", function(){
+
+const params = new URLSearchParams(window.location.search);
+const codigo = params.get("codigo")?.trim();
+const esAdmin = params.get("admin") === "true";
+
+const badge = document.getElementById("codigo");
+const estadoTexto = document.getElementById("estado");
+const estadoSecundario = document.getElementById("estado-secundario");
+const imagen = document.getElementById("imagen");
+
+if(codigo){
+    badge.textContent = codigo;
+
+    if(typeof alumnos !== "undefined" && alumnos[codigo]){
+
+        const estado = alumnos[codigo];
+
+        if(estado === "nopago"){
+            estadoTexto.textContent = "SIN PAGO";
+            estadoSecundario.textContent = "INACTIVO";
+            imagen.src = "img/cross.png";
+        }
+
+        else if(estado === "base"){
+            estadoTexto.textContent = "PAGO REGISTRADO";
+            estadoSecundario.textContent = "BASE ACTIVA";
+            imagen.src = "img/check.png";
+        }
+
+        else if(estado === "plus"){
+            estadoTexto.textContent = "PAGO REGISTRADO";
+            estadoSecundario.textContent = "PLUS ACTIVA";
+            imagen.src = "img/check-dorado.png";
+        }
+
+    }else{
+        estadoTexto.textContent = "CÓDIGO INVÁLIDO";
+        estadoSecundario.textContent = "ERROR";
+        imagen.src = "img/cross.png";
+    }
+
+}else{
+    badge.textContent = "SIN CÓDIGO";
+    estadoTexto.textContent = "NO IDENTIFICADO";
+    estadoSecundario.textContent = "ERROR";
+    imagen.src = "img/cross.png";
+}
+
+/* =========================
+   PANEL ADMINISTRADOR
+========================= */
+
+if(esAdmin && typeof alumnos !== "undefined"){
+
+    const panel = document.getElementById("adminPanel");
+    panel.style.display = "block";
+
+    let totalBase = 0;
+    let totalPlus = 0;
+    let totalNoPago = 0;
+
+    for(const key in alumnos){
+        if(alumnos[key] === "base") totalBase++;
+        if(alumnos[key] === "plus") totalPlus++;
+        if(alumnos[key] === "nopago") totalNoPago++;
+    }
+
+    document.getElementById("totalBase").textContent = totalBase;
+    document.getElementById("totalPlus").textContent = totalPlus;
+    document.getElementById("totalNoPago").textContent = totalNoPago;
+
+    const precioBase = 1000;
+    const precioPlus = 2000;
+
+    const ingreso = (totalBase * precioBase) + (totalPlus * precioPlus);
+
+    document.getElementById("ingresoEstimado").textContent = "$" + ingreso;
+
+}
+
+});
+</script>
+
 </head>
 
 <body>
 
-<header>
-  <div class="header-container">
-    <div class="logo">NEXA SYSTEM</div>
-    <div class="colab">Control de Membresía</div>
-  </div>
-</header>
+<div class="header">
+    <div class="left">
+        <div class="colab">
+            CON<br>COLABORACIÓN<br>DE
+        </div>
+        <div class="colab-line"></div>
+    </div>
+
+    <div class="right">
+        <img src="img/nexa-logo.png" alt="NEXA">
+        <div class="logo-line"></div>
+    </div>
+</div>
 
 <main>
 
-  <div class="badge" id="badgeCodigo">
-    Cargando código...
-  </div>
+<h1>REGISTRO DE PAGO</h1>
 
-  <div class="status-box">
-    <img id="statusImage" src="" alt="estado">
-  </div>
+<div class="badge" id="codigo">CARGANDO...</div>
 
-  <div class="status-text" id="estadoPrincipal"></div>
+<div class="status-box">
+    <div class="halo1"></div>
+    <div class="halo2"></div>
+    <img src="img/check.png" id="imagen" class="status-img" alt="Estado">
+</div>
 
-  <div class="secondary-text" id="estadoSecundario"></div>
+<div class="status-text" id="estado">CARGANDO...</div>
 
-  <div class="info">
-    Mes actual: <span id="mesActual"></span>
-  </div>
+<div class="info">
+    PERÍODO: <strong>MARZO 2026</strong><br>
+    SISTEMA: <strong>NEXA V1.0</strong><br>
+    ESTADO: <strong id="estado-secundario">---</strong>
+</div>
 
-  <!-- =========================
-       PANEL ADMINISTRADOR
-  ==========================-->
+<!-- PANEL ADMINISTRADOR -->
+<div id="adminPanel" style="display:none; margin-top:60px; border-top:1px solid rgba(255,255,255,0.08); padding-top:30px;">
 
-  <div id="adminPanel" style="display:none;">
-
-    <h3>Panel Administrativo</h3>
-
-    <div class="info">
-      Plan Base: <span id="totalBase"></span>
+    <div class="status-text" style="font-size:1.4rem; letter-spacing:3px; margin-bottom:25px;">
+        PANEL ADMINISTRATIVO
     </div>
 
-    <div class="info">
-      Plan Plus: <span id="totalPlus"></span>
+    <div class="info" style="margin-top:0;">
+        PLAN BASE: <strong id="totalBase">0</strong><br>
+        PLAN PLUS: <strong id="totalPlus">0</strong><br>
+        SIN PAGO: <strong id="totalNoPago">0</strong><br><br>
+        INGRESO ESTIMADO: <strong id="ingresoEstimado">$0</strong>
     </div>
 
-    <div class="info">
-      Sin Pago: <span id="totalNoPago"></span>
-    </div>
-
-    <hr style="margin:15px 0; opacity:0.3;">
-
-    <div class="info">
-      Ingreso estimado mensual:
-    </div>
-
-    <div class="status-text" id="ingresoEstimado"></div>
-
-  </div>
+</div>
 
 </main>
 
 <footer>
-  NEXA © 2026 - Sistema Interno de Control
+NEXA INFRASTRUCTURE © 2025 – VERIFIED STUDENT SYSTEM
 </footer>
-
-<script>
-
-/* =========================================
-   BASE DE DATOS SIMPLE
-=========================================*/
-
-const alumnos = {
-  "NEXA-001-CFPM": "plus",
-  "NEXA-002-CFPM": "base",
-  "NEXA-003-CFPM": "nopago"
-};
-
-/* =========================================
-   OBTENER PARÁMETROS URL
-=========================================*/
-
-const params = new URLSearchParams(window.location.search);
-const codigo = params.get("codigo");
-const esAdmin = params.get("admin") === "true";
-
-/* =========================================
-   REFERENCIAS DOM
-=========================================*/
-
-const badge = document.getElementById("badgeCodigo");
-const estadoPrincipal = document.getElementById("estadoPrincipal");
-const estadoSecundario = document.getElementById("estadoSecundario");
-const imagen = document.getElementById("statusImage");
-const mesActual = document.getElementById("mesActual");
-
-/* =========================================
-   MOSTRAR MES
-=========================================*/
-
-const fecha = new Date();
-const opciones = { month: 'long', year: 'numeric' };
-mesActual.textContent = fecha.toLocaleDateString('es-ES', opciones);
-
-/* =========================================
-   VALIDAR CÓDIGO
-=========================================*/
-
-if (!codigo || !alumnos[codigo]) {
-
-  badge.textContent = "Código inválido";
-  estadoPrincipal.textContent = "CÓDIGO INVÁLIDO";
-  estadoSecundario.textContent = "No registrado";
-  imagen.src = "img/cross.png";
-
-} else {
-
-  badge.textContent = codigo;
-
-  const estado = alumnos[codigo];
-
-  if (estado === "plus") {
-
-    estadoPrincipal.textContent = "PAGO REGISTRADO";
-    estadoSecundario.textContent = "PLAN PLUS ACTIVO";
-    imagen.src = "img/check-dorado.png";
-
-  }
-
-  if (estado === "base") {
-
-    estadoPrincipal.textContent = "PAGO REGISTRADO";
-    estadoSecundario.textContent = "PLAN BASE ACTIVO";
-    imagen.src = "img/check.png";
-
-  }
-
-  if (estado === "nopago") {
-
-    estadoPrincipal.textContent = "SIN PAGO";
-    estadoSecundario.textContent = "MEMBRESÍA INACTIVA";
-    imagen.src = "img/cross.png";
-
-  }
-
-}
-
-/* =========================================
-   PANEL ADMIN
-=========================================*/
-
-if (esAdmin) {
-
-  document.getElementById("adminPanel").style.display = "block";
-
-  let totalBase = 0;
-  let totalPlus = 0;
-  let totalNoPago = 0;
-
-  for (let clave in alumnos) {
-
-    if (alumnos[clave] === "base") totalBase++;
-    if (alumnos[clave] === "plus") totalPlus++;
-    if (alumnos[clave] === "nopago") totalNoPago++;
-
-  }
-
-  document.getElementById("totalBase").textContent = totalBase;
-  document.getElementById("totalPlus").textContent = totalPlus;
-  document.getElementById("totalNoPago").textContent = totalNoPago;
-
-  const precioBase = 3000;
-  const precioPlus = 5000;
-
-  const ingreso = (totalBase * precioBase) + (totalPlus * precioPlus);
-
-  document.getElementById("ingresoEstimado").textContent = "$" + ingreso;
-
-}
-
-</script>
 
 </body>
 </html>
