@@ -166,18 +166,18 @@ footer{
 
 #admin-section{
     margin-top:50px;
-    padding:15px;
+    padding:20px;
     border:1px dashed rgba(255,183,51,0.5);
     border-radius:6px;
     width:90%;
-    max-width:400px;
+    max-width:700px;
     background:rgba(255,183,51,0.05);
     text-align:left;
 }
 
 #admin-section button{
     padding:6px 12px;
-    margin-bottom:10px;
+    margin-bottom:15px;
     border:none;
     background:#FFB733;
     color:#1e1e1e;
@@ -186,8 +186,48 @@ footer{
     cursor:pointer;
 }
 
-#reporte div{
-    margin:4px 0;
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;
+    margin-top:20px;
+}
+
+.card{
+    padding:15px;
+    background:rgba(0,0,0,0.4);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:6px;
+}
+
+.card-title{
+    font-size:12px;
+    opacity:.6;
+    margin-bottom:8px;
+}
+
+.card-value{
+    font-size:20px;
+    font-weight:bold;
+    color:#ffffff;
+}
+
+.bar-container{
+    margin-top:20px;
+}
+
+.bar{
+    height:14px;
+    background:#333;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.bar-fill{
+    height:100%;
+    width:0%;
+    background:#FFB733;
+    transition:width .6s ease;
 }
 </style>
 
@@ -238,32 +278,29 @@ document.addEventListener("DOMContentLoaded", function(){
         imagen.src = "img/cross.png";
     }
 
-    // Sección admin solo visible con &admin=true
     if(isAdmin){
         const adminDiv = document.getElementById("admin-section");
         adminDiv.style.display = "block";
 
-        const btnTest = document.getElementById("test-codigos");
-        const reporteDiv = document.getElementById("reporte");
+        let totalBase=0,totalPlus=0,totalNoPago=0;
+        const totalAlumnos = Object.keys(alumnos).length;
 
-        btnTest.addEventListener("click", function(){
-            reporteDiv.innerHTML = "";
-            const codigosPrueba = Object.keys(alumnos).concat(["NEXA-999-CFPM", "NEXA-000-CFPM"]);
-            codigosPrueba.forEach(codigo=>{
-                let estado="";
-                let imgSrc="";
-                if(alumnos[codigo]){
-                    const val = alumnos[codigo];
-                    if(val==="plus"){ estado="PAGO REGISTRADO - PLUS ACTIVA"; imgSrc="check-dorado.png"; }
-                    else if(val==="base"){ estado="PAGO REGISTRADO - BASE ACTIVA"; imgSrc="check.png"; }
-                    else if(val==="nopago"){ estado="SIN PAGO - INACTIVO"; imgSrc="cross.png"; }
-                } else {
-                    estado="CÓDIGO INVÁLIDO - ERROR"; imgSrc="cross.png";
-                }
-                const linea = `<div>${codigo}: ${estado} <img src="img/${imgSrc}" style="width:24px; vertical-align:middle;"></div>`;
-                reporteDiv.innerHTML += linea;
-            });
-        });
+        for(const key in alumnos){
+            if(alumnos[key]==="base") totalBase++;
+            if(alumnos[key]==="plus") totalPlus++;
+            if(alumnos[key]==="nopago") totalNoPago++;
+        }
+
+        document.getElementById("baseCount").textContent=totalBase;
+        document.getElementById("plusCount").textContent=totalPlus;
+        document.getElementById("noPagoCount").textContent=totalNoPago;
+        document.getElementById("totalCount").textContent=totalAlumnos;
+
+        const ingreso=(totalBase*1000)+(totalPlus*2000);
+        document.getElementById("ingresoTotal").textContent="$"+ingreso;
+
+        const porcentaje=((totalBase+totalPlus)/totalAlumnos)*100;
+        document.getElementById("barraProgreso").style.width=porcentaje+"%";
     }
 
 });
@@ -307,10 +344,44 @@ document.addEventListener("DOMContentLoaded", function(){
     ESTADO: <strong id="estado-secundario">---</strong>
 </div>
 
-<!-- Admin solo visible si admin=true -->
 <div id="admin-section" style="display:none;">
-    <button id="test-codigos">Testear Todos los Códigos (Privado)</button>
-    <div id="reporte"></div>
+
+    <div style="font-size:18px;font-weight:bold;margin-bottom:10px;">
+        DASHBOARD ADMINISTRATIVO
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="card">
+            <div class="card-title">TOTAL ALUMNOS</div>
+            <div class="card-value" id="totalCount">0</div>
+        </div>
+        <div class="card">
+            <div class="card-title">PLAN BASE</div>
+            <div class="card-value" id="baseCount">0</div>
+        </div>
+        <div class="card">
+            <div class="card-title">PLAN PLUS</div>
+            <div class="card-value" id="plusCount">0</div>
+        </div>
+        <div class="card">
+            <div class="card-title">SIN PAGO</div>
+            <div class="card-value" id="noPagoCount">0</div>
+        </div>
+        <div class="card">
+            <div class="card-title">INGRESO ESTIMADO</div>
+            <div class="card-value" id="ingresoTotal">$0</div>
+        </div>
+    </div>
+
+    <div class="bar-container">
+        <div style="margin-bottom:6px;font-size:12px;opacity:.6;">
+            PORCENTAJE DE PAGO
+        </div>
+        <div class="bar">
+            <div class="bar-fill" id="barraProgreso"></div>
+        </div>
+    </div>
+
 </div>
 
 </main>
