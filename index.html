@@ -212,7 +212,7 @@ NEXA INFRASTRUCTURE © 2025 – VERIFIED STUDENT SYSTEM
 
 <script>
 const params = new URLSearchParams(window.location.search);
-const codigo = params.get("codigo");
+const codigo = params.get("codigo")?.trim();
 
 const badge = document.getElementById("codigo");
 const estadoTexto = document.getElementById("estado");
